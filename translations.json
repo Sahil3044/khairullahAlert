@@ -1,9 +1,9 @@
 {
   "alerts": {
     "normal": {
-      "en": { "title": "", "text": "You clicked the button!" },
-      "ps": { "title": "", "text": "تاسو تڼۍ کلیک کړه!" },
-      "fa": { "title": "", "text": "شما روی دکمه کلیک کردید!" }
+      "en": { "title": "Normal Alert", "text": "You clicked the button!" },
+      "ps": { "title": "نورمال خبرتیا", "text": "تاسو تڼۍ کلیک کړه!" },
+      "fa": { "title": "هشدار معمولی", "text": "شما روی دکمه کلیک کردید!" }
     },
     "success": {
       "en": { "title": "Good job!", "text": "You clicked the button!" },
@@ -26,9 +26,18 @@
       "fa": { "title": "اطلاعات", "text": "اینجا اطلاعاتی است." }
     },
     "confirm": {
-      "en": { "title": "Do you want to save the changes?", "text": "" },
-      "ps": { "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟", "text": "" },
-      "fa": { "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟", "text": "" }
+      "en": {
+        "title": "Do you want to save the changes?",
+        "text": "Changes will be saved permanently."
+      },
+      "ps": {
+        "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟",
+        "text": "بدلونونه به د تل لپاره ثبت شي."
+      },
+      "fa": {
+        "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟",
+        "text": "تغییرات به طور دائم ذخیره خواهند شد."
+      }
     },
     "delete": {
       "en": {
@@ -50,9 +59,9 @@
       "fa": { "title": "تأیید حذف", "text": "واقعاً این مورد را حذف کنید؟" }
     },
     "save": {
-      "en": { "title": "Saved", "text": "Data saved." },
-      "ps": { "title": "ثبت شو", "text": "معلومات ثبت شول." },
-      "fa": { "title": "ذخیره شد", "text": "داده‌ها ذخیره شدند." }
+      "en": { "title": "Saved", "text": "Data saved successfully." },
+      "ps": { "title": "ثبت شو", "text": "معلومات په بریالیتوب سره ثبت شول." },
+      "fa": { "title": "ذخیره شد", "text": "داده‌ها با موفقیت ذخیره شدند." }
     },
     "load": {
       "en": { "title": "Loading", "text": "Please wait..." },
@@ -75,14 +84,14 @@
       "fa": { "title": "انقضا", "text": "جلسه منقضی شد." }
     },
     "login": {
-      "en": { "title": "Login", "text": "Logged in." },
-      "ps": { "title": "ننوتل", "text": "ننوتل." },
-      "fa": { "title": "ورود", "text": "وارد شدید." }
+      "en": { "title": "Login", "text": "Logged in successfully." },
+      "ps": { "title": "ننوتل", "text": "په بریالیتوب سره ننوتل." },
+      "fa": { "title": "ورود", "text": "با موفقیت وارد شدید." }
     },
     "logout": {
-      "en": { "title": "Logout", "text": "Logged out." },
-      "ps": { "title": "وتل", "text": "ووتئ." },
-      "fa": { "title": "خروج", "text": "خارج شدید." }
+      "en": { "title": "Logout", "text": "Logged out successfully." },
+      "ps": { "title": "وتل", "text": "په بریالیتوب سره ووتئ." },
+      "fa": { "title": "خروج", "text": "با موفقیت خارج شدید." }
     },
     "limit": {
       "en": { "title": "Limit", "text": "Limit reached." },
@@ -100,9 +109,9 @@
       "fa": { "title": "بروزرسانی", "text": "بروزرسانی انجام شد." }
     },
     "attention": {
-      "en": { "title": "Attention", "text": "Pay attention." },
-      "ps": { "title": "پاملرنه", "text": "پام وکړئ." },
-      "fa": { "title": "توجه", "text": "توجه کنید." }
+      "en": { "title": "Attention", "text": "Pay attention to this message." },
+      "ps": { "title": "پاملرنه", "text": "دې پیغام ته پام وکړئ." },
+      "fa": { "title": "توجه", "text": "به این پیام توجه کنید." }
     },
     "permission": {
       "en": { "title": "Permission", "text": "Access denied." },
@@ -110,14 +119,17 @@
       "fa": { "title": "عدم دسترسی", "text": "دسترسی رد شد." }
     },
     "retry": {
-      "en": { "title": "Retry", "text": "Try again." },
-      "ps": { "title": "بیا هڅه", "text": "بیا هڅه وکړئ." },
-      "fa": { "title": "تلاش مجدد", "text": "دوباره تلاش کنید." }
+      "en": { "title": "Retry", "text": "Please try again." },
+      "ps": { "title": "بیا هڅه", "text": "مهرباني وکړئ بیا هڅه وکړئ." },
+      "fa": { "title": "تلاش مجدد", "text": "لطفاً دوباره تلاش کنید." }
     },
     "submitted": {
-      "en": { "title": "Submitted", "text": "Form submitted." },
-      "ps": { "title": "سپارل شوی", "text": "فورمه وسپارل شوه." },
-      "fa": { "title": "ارسال شد", "text": "فرم ارسال شد." }
+      "en": { "title": "Submitted", "text": "Form submitted successfully." },
+      "ps": {
+        "title": "سپارل شوی",
+        "text": "فورمه په بریالیتوب سره وسپارل شوه."
+      },
+      "fa": { "title": "ارسال شد", "text": "فرم با موفقیت ارسال شد." }
     },
     "question": {
       "en": { "title": "The Internet?", "text": "That thing is still around?" },
@@ -140,14 +152,29 @@
       "fa": { "title": "مسدود شد", "text": "عملیات مسدود شد." }
     },
     "notification": {
-      "en": { "title": "Your work has been saved", "text": "" },
-      "ps": { "title": "ستاسو کار ثبت شوی دی", "text": "" },
-      "fa": { "title": "کار شما ذخیره شده است", "text": "" }
+      "en": {
+        "title": "Your work has been saved",
+        "text": "All changes are saved."
+      },
+      "ps": {
+        "title": "ستاسو کار ثبت شوی دی",
+        "text": "ټول بدلونونه ثبت شوي دي."
+      },
+      "fa": {
+        "title": "کار شما ذخیره شده است",
+        "text": "همه تغییرات ذخیره شده‌اند."
+      }
     },
     "basic": {
-      "en": { "title": "khairullahAlert is working!", "text": "" },
-      "ps": { "title": "خیرالله خبرتیا کار کوي!", "text": "" },
-      "fa": { "title": "هشدار خیرالله کار می‌کند!", "text": "" }
+      "en": {
+        "title": "khairullahAlert is working!",
+        "text": "Basic alert example."
+      },
+      "ps": {
+        "title": "خیرالله خبرتیا کار کوي!",
+        "text": "د بنسټیز خبرتیا بیلګه."
+      },
+      "fa": { "title": "هشدار خیرالله کار می‌کند!", "text": "مثال هشدار پایه." }
     },
     "titleText": {
       "en": { "title": "The Internet?", "text": "That thing is still around?" },
@@ -160,34 +187,58 @@
       "fa": { "title": "اوه...", "text": "مشکلی پیش آمد!" }
     },
     "longContent": {
-      "en": { "title": "", "text": "" },
-      "ps": { "title": "", "text": "" },
-      "fa": { "title": "", "text": "" }
+      "en": {
+        "title": "Long Content",
+        "text": "This is a long content alert."
+      },
+      "ps": {
+        "title": "اوږد منځپانګه",
+        "text": "دا یوه اوږده منځپانګه خبرتیا ده."
+      },
+      "fa": {
+        "title": "محتوای طولانی",
+        "text": "این یک هشدار با محتوای طولانی است."
+      }
     },
     "draggable": {
-      "en": { "title": "Drag me!", "text": "" },
-      "ps": { "title": "زه راکش کړئ!", "text": "" },
-      "fa": { "title": "من را بکشید!", "text": "" }
+      "en": { "title": "Drag me!", "text": "You can drag this alert." },
+      "ps": {
+        "title": "زه راکش کړئ!",
+        "text": "تاسو کولی شئ دا خبرتیا راکش کړئ."
+      },
+      "fa": {
+        "title": "من را بکشید!",
+        "text": "شما می‌توانید این هشدار را بکشید."
+      }
     },
     "customHtml": {
-      "en": { "title": "<strong>HTML <u>example</u></strong>", "text": "" },
-      "ps": { "title": "<strong>د HTML <u>بېلګه</u></strong>", "text": "" },
-      "fa": { "title": "<strong>مثال <u>HTML</u></strong>", "text": "" }
+      "en": { "title": "HTML Example", "text": "Custom HTML content." },
+      "ps": { "title": "د HTML بېلګه", "text": "دودیزه HTML منځپانګه." },
+      "fa": { "title": "مثال HTML", "text": "محتوای HTML سفارشی." }
     },
     "threeButtons": {
-      "en": { "title": "Do you want to save the changes?", "text": "" },
-      "ps": { "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟", "text": "" },
-      "fa": { "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟", "text": "" }
+      "en": {
+        "title": "Do you want to save the changes?",
+        "text": "Choose an option."
+      },
+      "ps": {
+        "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟",
+        "text": "یو اختیار وټاکئ."
+      },
+      "fa": {
+        "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟",
+        "text": "یک گزینه انتخاب کنید."
+      }
     },
     "topEnd": {
-      "en": { "title": "Your work has been saved", "text": "" },
-      "ps": { "title": "ستاسو کار ثبت شوی دی", "text": "" },
-      "fa": { "title": "کار شما ذخیره شده است", "text": "" }
+      "en": { "title": "Your work has been saved", "text": "Changes saved." },
+      "ps": { "title": "ستاسو کار ثبت شوی دی", "text": "بدلونونه ثبت شول." },
+      "fa": { "title": "کار شما ذخیره شده است", "text": "تغییرات ذخیره شدند." }
     },
     "customAnim": {
-      "en": { "title": "Custom animation", "text": "" },
-      "ps": { "title": "دودیزه انیمیشن", "text": "" },
-      "fa": { "title": "انیمیشن سفارشی", "text": "" }
+      "en": { "title": "Custom Animation", "text": "With bounce effect." },
+      "ps": { "title": "دودیزه انیمیشن", "text": "د باؤنس اثر سره." },
+      "fa": { "title": "انیمیشن سفارشی", "text": "با اثر پرش." }
     },
     "confirmDeleteFn": {
       "en": {
@@ -224,35 +275,128 @@
     },
     "customStyle": {
       "en": {
-        "title": "Custom width, padding, color, background.",
-        "text": ""
-      },
-      "ps": { "title": "دودیزه پلنوالی، پیډینګ، رنګ، شالید.", "text": "" },
-      "fa": { "title": "عرض، padding، رنگ و پس‌زمینه سفارشی.", "text": "" }
-    },
-    "timer": {
-      "en": {
-        "title": "Auto close alert!",
-        "text": "I will close in <b></b> milliseconds."
+        "title": "Custom Style",
+        "text": "Custom width, padding, color, background."
       },
       "ps": {
-        "title": "خپله تړل کیدونکی خبرتیا!",
-        "text": "زه به په <b></b> ملی ثانیو کې بند شم."
+        "title": "دودیزه سټایل",
+        "text": "دودیزه پلنوالی، پیډینګ، رنګ، شالید."
       },
       "fa": {
-        "title": "هشدار بسته شدن خودکار!",
-        "text": "من در <b></b> میلی‌ثانیه بسته می‌شم."
+        "title": "استایل سفارشی",
+        "text": "عرض، padding، رنگ و پس‌زمینه سفارشی."
+      }
+    },
+    "timer": {
+      "en": { "title": "Auto Close Alert", "text": "Closes automatically." },
+      "ps": {
+        "title": "خپله تړل کیدونکی خبرتیا",
+        "text": "په اوتومات ډول تړل کیږي."
+      },
+      "fa": {
+        "title": "هشدار بسته شدن خودکار",
+        "text": "به طور خودکار بسته می‌شود."
       }
     },
     "rtl": {
-      "en": { "title": "Would you like to continue?", "text": "" },
-      "ps": { "title": "ایا تاسو غواړئ ادامه ورکړئ؟", "text": "" },
-      "fa": { "title": "هل تريد الاستمرار؟", "text": "" }
+      "en": {
+        "title": "Would you like to continue?",
+        "text": "Right-to-left support."
+      },
+      "ps": {
+        "title": "ایا تاسو غواړئ ادامه ورکړئ؟",
+        "text": "ښي نه کیڼ ملاتړ."
+      },
+      "fa": {
+        "title": "آیا می‌خواهید ادامه دهید؟",
+        "text": "پشتیبانی از راست به چپ."
+      }
     },
     "ajax": {
-      "en": { "title": "Submit your Github username", "text": "" },
-      "ps": { "title": "خپل د ګیټ‌هب کارن نوم وسپارئ", "text": "" },
-      "fa": { "title": "نام کاربری گیت‌هاب خود را وارد کنید", "text": "" }
+      "en": {
+        "title": "Submit your Github username",
+        "text": "Enter a valid username."
+      },
+      "ps": {
+        "title": "خپل د ګیټ‌هب کارن نوم وسپارئ",
+        "text": "یو معتبر کارن نوم دننه کړئ."
+      },
+      "fa": {
+        "title": "نام کاربری گیت‌هاب خود را وارد کنید",
+        "text": "یک نام کاربری معتبر وارد کنید."
+      }
+    },
+    "confirmSuccess": {
+      "en": { "title": "Saved!", "text": "Changes saved." },
+      "ps": { "title": "ثبت شو!", "text": "بدلونونه ثبت شول." },
+      "fa": { "title": "ذخیره شد!", "text": "تغییرات ذخیره شدند." }
+    },
+    "confirmInfo": {
+      "en": { "title": "Changes not saved", "text": "You chose not to save." },
+      "ps": {
+        "title": "بدلونونه ثبت نه شول",
+        "text": "تاسو انتخاب کړی چې ثبت نه کړئ."
+      },
+      "fa": {
+        "title": "تغییرات ذخیره نشدند",
+        "text": "شما انتخاب کردید که ذخیره نکنید."
+      }
+    },
+    "confirmCancelled": {
+      "en": { "title": "Cancelled", "text": "Action cancelled." },
+      "ps": { "title": "لغوه شوه", "text": "عمل لغوه شو." },
+      "fa": { "title": "لغو شد", "text": "عملیات لغو شد." }
+    },
+    "deleteSuccess": {
+      "en": { "title": "Deleted!", "text": "Item deleted." },
+      "ps": { "title": "حذف شو!", "text": "توکی حذف شو." },
+      "fa": { "title": "حذف شد!", "text": "مورد حذف شد." }
+    },
+    "deleteCancelled": {
+      "en": { "title": "Cancelled", "text": "Deletion cancelled." },
+      "ps": { "title": "لغوه شوه", "text": "حذف لغوه شو." },
+      "fa": { "title": "لغو شد", "text": "حذف لغو شد." }
+    },
+    "confirmDeleteSuccess": {
+      "en": { "title": "Deleted!", "text": "Item deleted." },
+      "ps": { "title": "حذف شو!", "text": "توکی حذف شو." },
+      "fa": { "title": "حذف شد!", "text": "مورد حذف شد." }
+    },
+    "confirmDeleteInfo": {
+      "en": { "title": "Denied", "text": "Deletion denied." },
+      "ps": { "title": "رد شو", "text": "حذف رد شو." },
+      "fa": { "title": "رد شد", "text": "حذف رد شد." }
+    },
+    "threeButtonsSuccess": {
+      "en": { "title": "Saved!", "text": "Changes saved." },
+      "ps": { "title": "ثبت شو!", "text": "بدلونونه ثبت شول." },
+      "fa": { "title": "ذخیره شد!", "text": "تغییرات ذخیره شدند." }
+    },
+    "threeButtonsInfo": {
+      "en": { "title": "Changes not saved", "text": "You chose not to save." },
+      "ps": {
+        "title": "بدلونونه ثبت نه شول",
+        "text": "تاسو انتخاب کړی چې ثبت نه کړئ."
+      },
+      "fa": {
+        "title": "تغییرات ذخیره نشدند",
+        "text": "شما انتخاب کردید که ذخیره نکنید."
+      }
+    },
+    "confirmDeleteFnSuccess": {
+      "en": { "title": "Deleted!", "text": "Your file has been deleted." },
+      "ps": { "title": "حذف شو!", "text": "ستاسو فایل حذف شوی دی." },
+      "fa": { "title": "حذف شد!", "text": "فایل شما حذف شده است." }
+    },
+    "ajaxSuccess": {
+      "en": { "title": "Success!", "text": "Github user found." },
+      "ps": { "title": "بریالیتوب!", "text": "د ګیټ‌هب کارن وموندل شو." },
+      "fa": { "title": "موفقیت!", "text": "کاربر گیت‌هاب پیدا شد." }
+    },
+    "ajaxError": {
+      "en": { "title": "Error!", "text": "User not found." },
+      "ps": { "title": "تېروتنه!", "text": "کارن ونه موندل شو." },
+      "fa": { "title": "خطا!", "text": "کاربر پیدا نشد." }
     }
   },
   "buttons": {
@@ -265,7 +409,7 @@
       "dontSave": "Don't save",
       "yesDelete": "Yes, delete it!",
       "noCancel": "No, cancel!",
-      "lookup": "Look up" 
+      "lookup": "Look up"
     },
     "ps": {
       "ok": "سمه ده",
