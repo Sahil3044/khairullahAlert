@@ -54,8 +54,7 @@ const khairullah = (function () {
 
   async function loadTranslations() {
     try {
-      const response = await fetch('https://cdn.jsdelivr.net/gh/your-username/alert-system@latest/translations.json');
-      if (!response.ok) throw new Error('Failed to load translations');
+const response = await fetch('https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/translations.json');      if (!response.ok) throw new Error('Failed to load translations');
       translations = await response.json();
       setLanguage(currentLang);
     } catch (error) {
