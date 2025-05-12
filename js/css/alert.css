@@ -1,0 +1,143 @@
+.alert-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.alert-backdrop.show {
+  display: block;
+  opacity: 1;
+}
+.alert-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  min-width: 300px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 10000;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.alert-box.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.alert-box.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+.alert-box.top-right {
+  top: 20px;
+  left: auto;
+  right: 20px;
+  transform: translate(0, 0) scale(0.7);
+  max-width: 280px;
+}
+.alert-box.top-right.show {
+  transform: translate(0, 0) scale(1);
+}
+.alert-box.top-right.hide {
+  transform: translate(0, 0) scale(0.7);
+}
+.alert-box svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  animation: iconPop 0.4s ease;
+}
+.alert-box h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+.alert-box p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #444;
+}
+.alert-box .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.alert-box button {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.alert-box button:hover {
+  transform: translateY(-1px);
+}
+.alert-box .alert-confirm-btn {
+  background: #3085d6;
+  color: #fff;
+}
+.alert-box .alert-confirm-btn:hover {
+  background: #286bb5;
+}
+.alert-box .alert-cancel-btn {
+  background: #d33;
+  color: #fff;
+}
+.alert-box .alert-cancel-btn:hover {
+  background: #b32d2d;
+}
+.alert-box.success { border: 2px solid #28a745; }
+.alert-box.error { border: 2px solid #dc3545; }
+.alert-box.warning { border: 2px solid #ffc107; }
+.alert-box.info { border: 2px solid #17a2b8; }
+.alert-box.confirm { border: 2px solid #3085d6; }
+.alert-box.delete { border: 2px solid #c82333; }
+.alert-box.save { border: 2px solid #28a745; }
+.alert-box.load { border: 2px solid #6f42c1; }
+.alert-box.upload { border: 2px solid #17a2b8; }
+.alert-box.download { border: 2px solid #28a745; }
+.alert-box.timeout { border: 2px solid #fd7e14; }
+.alert-box.login { border: 2px solid #28a745; }
+.alert-box.logout { border: 2px solid #6c757d; }
+.alert-box.limit { border: 2px solid #dc3545; }
+.alert-box.network { border: 2px solid #dc3545; }
+.alert-box.update { border: 2px solid #3085d6; }
+.alert-box.attention { border: 2px solid #e83e8c; }
+.alert-box.permission { border: 2px solid #dc3545; }
+.alert-box.retry { border: 2px solid #fd7e14; }
+.alert-box.submitted { border: 2px solid #28a745; }
+.alert-box.question { border: 2px solid #6c757d; }
+.alert-box.processing { border: 2px solid #6f42c1; }
+.alert-box.cancelled { border: 2px solid #6c757d; }
+.alert-box.blocked { border: 2px solid #dc3545; }
+.alert-box.notification { border: 2px solid #17a2b8; }
+@keyframes iconPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+@media (max-width: 600px) {
+  .alert-box {
+    min-width: 260px;
+    padding: 16px;
+  }
+  .alert-box .buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
