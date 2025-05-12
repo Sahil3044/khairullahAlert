@@ -1,269 +1,875 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>khairullahAlert Demo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="./alert.css">
-  <style>
-    body { font-family: 'Poppins', sans-serif; margin: 20px; background: #f0f2f5; text-align: center; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    select, button { padding: 8px; margin: 5px; font-size: 14px; border-radius: 6px; cursor: pointer; }
-    .alert-section { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px; }
-    .alert-item { flex: 1 1 300px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
-    .alert-item button { background: #3085d6; color: #fff; border: none; width: 100%; }
-    .alert-item button:hover { background: #286bb5; }
-    .alert-item .source-btn { background: #6c757d; font-size: 12px; padding: 6px; }
-    .alert-item .source-btn:hover { background: #5a6268; }
-    .source-code { display: none; margin-top: 10px; background: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 12px; text-align: left; white-space: pre-wrap; word-wrap: break-word; }
-    .source-code.show { display: block; }
-    h3 { margin: 20px 0 10px; }
-    @media (max-width: 600px) {
-      .alert-item { flex: 1 1 100%; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>khairullahAlert Demo</h2>
-    <select id="language" onchange="khairullah.setLanguage(this.value)">
-      <option value="en">English</option>
-      <option value="ps">Pashto</option>
-      <option value="fa">Dari</option>
-    </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>khairullahAlert Demo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/css/alert.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 20px;
+        background: #f0f2f5;
+        text-align: center;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      select,
+      button {
+        padding: 8px;
+        margin: 5px;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .alert-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .alert-item {
+        flex: 1 1 300px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .alert-item button {
+        background: #3085d6;
+        color: #fff;
+        border: none;
+        width: 100%;
+      }
+      .alert-item button:hover {
+        background: #286bb5;
+      }
+      .alert-item .source-btn,
+      .alert-item .copy-btn {
+        background: #6c757d;
+        font-size: 12px;
+        padding: 6px;
+        width: 48%;
+        margin: 2px;
+      }
+      .alert-item .copy-btn {
+        background: #28a745;
+      }
+      .alert-item .source-btn:hover {
+        background: #5a6268;
+      }
+      .alert-item .copy-btn:hover {
+        background: #218838;
+      }
+      .source-code {
+        display: none;
+        margin-top: 10px;
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        text-align: left;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: "Courier New", monospace;
+      }
+      .source-code.show {
+        display: block;
+      }
+      h3 {
+        margin: 20px 0 10px;
+      }
+      @media (max-width: 600px) {
+        .alert-item {
+          flex: 1 1 100%;
+        }
+        .alert-item .source-btn,
+        .alert-item .copy-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>khairullahAlert Demo</h2>
+      <select id="language" onchange="khairullah.setLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="ps">Pashto</option>
+        <option value="fa">Dari</option>
+      </select>
 
-    <h3>Original Alerts</h3>
-    <div class="alert-section">
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'success'})">Success</button>
-        <button class="source-btn" onclick="toggleSource('success-source')">View Source</button>
-        <div id="success-source" class="source-code">khairullah.fire({type: 'success'})</div>
+      <h3>Original Alerts</h3>
+      <div class="alert-section">
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'success'})">Success</button>
+          <button class="source-btn" onclick="toggleSource('success-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('success-source')">
+            Copy
+          </button>
+          <div id="success-source" class="source-code">
+            khairullah.fire({ type: 'success' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'error'})">Error</button>
+          <button class="source-btn" onclick="toggleSource('error-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('error-source')">
+            Copy
+          </button>
+          <div id="error-source" class="source-code">
+            khairullah.fire({ type: 'error' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'warning'})">Warning</button>
+          <button class="source-btn" onclick="toggleSource('warning-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('warning-source')">
+            Copy
+          </button>
+          <div id="warning-source" class="source-code">
+            khairullah.fire({ type: 'warning' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'info'})">Info</button>
+          <button class="source-btn" onclick="toggleSource('info-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('info-source')">
+            Copy
+          </button>
+          <div id="info-source" class="source-code">
+            khairullah.fire({ type: 'info' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'confirm', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'confirmSuccess'}); } else if (result.isDenied) { khairullah.fire({type: 'confirmInfo'}); } else { khairullah.fire({type: 'confirmCancelled'}); } })"
+          >
+            Confirm
+          </button>
+          <button class="source-btn" onclick="toggleSource('confirm-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('confirm-source')">
+            Copy
+          </button>
+          <div id="confirm-source" class="source-code">
+            khairullah.fire({ type: 'confirm', showDenyButton: true,
+            showCancelButton: true, confirmButtonText: 'Save', denyButtonText:
+            'Don\'t save', cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { khairullah.fire({ type: 'confirmSuccess' });
+            } else if (result.isDenied) { khairullah.fire({ type: 'confirmInfo'
+            }); } else { khairullah.fire({ type: 'confirmCancelled' }); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'delete', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'deleteSuccess'}); } else { khairullah.fire({type: 'deleteCancelled'}); } })"
+          >
+            Delete
+          </button>
+          <button class="source-btn" onclick="toggleSource('delete-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('delete-source')">
+            Copy
+          </button>
+          <div id="delete-source" class="source-code">
+            khairullah.fire({ type: 'delete', showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No,
+            cancel!' }).then((result) => { if (result.isConfirmed) {
+            khairullah.fire({ type: 'deleteSuccess' }); } else {
+            khairullah.fire({ type: 'deleteCancelled' }); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'confirmDelete', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Yes, delete it!', denyButtonText: 'Deny', cancelButtonText: 'No, cancel!'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'confirmDeleteSuccess'}); } else if (result.isDenied) { khairullah.fire({type: 'confirmDeleteInfo'}); } else { khairullah.fire({type: 'confirmCancelled'}); } })"
+          >
+            Confirm Delete
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('confirmDelete-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('confirmDelete-source')">
+            Copy
+          </button>
+          <div id="confirmDelete-source" class="source-code">
+            khairullah.fire({ type: 'confirmDelete', showDenyButton: true,
+            showCancelButton: true, confirmButtonText: 'Yes, delete it!',
+            denyButtonText: 'Deny', cancelButtonText: 'No, cancel!'
+            }).then((result) => { if (result.isConfirmed) { khairullah.fire({
+            type: 'confirmDeleteSuccess' }); } else if (result.isDenied) {
+            khairullah.fire({ type: 'confirmDeleteInfo' }); } else {
+            khairullah.fire({ type: 'confirmCancelled' }); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'save'})">Save</button>
+          <button class="source-btn" onclick="toggleSource('save-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('save-source')">
+            Copy
+          </button>
+          <div id="save-source" class="source-code">
+            khairullah.fire({ type: 'save' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'load'})">Load</button>
+          <button class="source-btn" onclick="toggleSource('load-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('load-source')">
+            Copy
+          </button>
+          <div id="load-source" class="source-code">
+            khairullah.fire({ type: 'load' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'upload'})">Upload</button>
+          <button class="source-btn" onclick="toggleSource('upload-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('upload-source')">
+            Copy
+          </button>
+          <div id="upload-source" class="source-code">
+            khairullah.fire({ type: 'upload' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'download'})">
+            Download
+          </button>
+          <button class="source-btn" onclick="toggleSource('download-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('download-source')">
+            Copy
+          </button>
+          <div id="download-source" class="source-code">
+            khairullah.fire({ type: 'download' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'timeout'})">Timeout</button>
+          <button class="source-btn" onclick="toggleSource('timeout-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('timeout-source')">
+            Copy
+          </button>
+          <div id="timeout-source" class="source-code">
+            khairullah.fire({ type: 'timeout' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'login'})">Login</button>
+          <button class="source-btn" onclick="toggleSource('login-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('login-source')">
+            Copy
+          </button>
+          <div id="login-source" class="source-code">
+            khairullah.fire({ type: 'login' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'logout'})">Logout</button>
+          <button class="source-btn" onclick="toggleSource('logout-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('logout-source')">
+            Copy
+          </button>
+          <div id="logout-source" class="source-code">
+            khairullah.fire({ type: 'logout' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'limit'})">Limit</button>
+          <button class="source-btn" onclick="toggleSource('limit-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('limit-source')">
+            Copy
+          </button>
+          <div id="limit-source" class="source-code">
+            khairullah.fire({ type: 'limit' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'network'})">Network</button>
+          <button class="source-btn" onclick="toggleSource('network-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('network-source')">
+            Copy
+          </button>
+          <div id="network-source" class="source-code">
+            khairullah.fire({ type: 'network' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'update'})">Update</button>
+          <button class="source-btn" onclick="toggleSource('update-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('update-source')">
+            Copy
+          </button>
+          <div id="update-source" class="source-code">
+            khairullah.fire({ type: 'update' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'attention', showCancelButton: true, confirmButtonText: 'OK', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { console.log('Attention alert confirmed'); } })"
+          >
+            Attention
+          </button>
+          <button class="source-btn" onclick="toggleSource('attention-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('attention-source')">
+            Copy
+          </button>
+          <div id="attention-source" class="source-code">
+            khairullah.fire({ type: 'attention', showCancelButton: true,
+            confirmButtonText: 'OK', cancelButtonText: 'Cancel' }).then((result)
+            => { if (result.isConfirmed) { console.log('Attention alert
+            confirmed'); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'permission'})">
+            Permission
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('permission-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('permission-source')">
+            Copy
+          </button>
+          <div id="permission-source" class="source-code">
+            khairullah.fire({ type: 'permission' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'retry'})">Retry</button>
+          <button class="source-btn" onclick="toggleSource('retry-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('retry-source')">
+            Copy
+          </button>
+          <div id="retry-source" class="source-code">
+            khairullah.fire({ type: 'retry' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'submitted'})">
+            Submitted
+          </button>
+          <button class="source-btn" onclick="toggleSource('submitted-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('submitted-source')">
+            Copy
+          </button>
+          <div id="submitted-source" class="source-code">
+            khairullah.fire({ type: 'submitted' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'question', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Yes', denyButtonText: 'No', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { console.log('Question alert confirmed'); } else if (result.isDenied) { console.log('Question alert denied'); } })"
+          >
+            Question
+          </button>
+          <button class="source-btn" onclick="toggleSource('question-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('question-source')">
+            Copy
+          </button>
+          <div id="question-source" class="source-code">
+            khairullah.fire({ type: 'question', showDenyButton: true,
+            showCancelButton: true, confirmButtonText: 'Yes', denyButtonText:
+            'No', cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { console.log('Question alert confirmed'); }
+            else if (result.isDenied) { console.log('Question alert denied'); }
+            })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'processing'})">
+            Processing
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('processing-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('processing-source')">
+            Copy
+          </button>
+          <div id="processing-source" class="source-code">
+            khairullah.fire({ type: 'processing' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'cancelled'})">
+            Cancelled
+          </button>
+          <button class="source-btn" onclick="toggleSource('cancelled-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('cancelled-source')">
+            Copy
+          </button>
+          <div id="cancelled-source" class="source-code">
+            khairullah.fire({ type: 'cancelled' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'blocked'})">Blocked</button>
+          <button class="source-btn" onclick="toggleSource('blocked-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('blocked-source')">
+            Copy
+          </button>
+          <div id="blocked-source" class="source-code">
+            khairullah.fire({ type: 'blocked' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'notification', position: 'top-end', timer: 1500})"
+          >
+            Notification
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('notification-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('notification-source')">
+            Copy
+          </button>
+          <div id="notification-source" class="source-code">
+            khairullah.fire({ type: 'notification', position: 'top-end', timer:
+            1500 })
+          </div>
+        </div>
       </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'error'})">Error</button>
-        <button class="source-btn" onclick="toggleSource('error-source')">View Source</button>
-        <div id="error-source" class="source-code">khairullah.fire({type: 'error'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'warning'})">Warning</button>
-        <button class="source-btn" onclick="toggleSource('warning-source')">View Source</button>
-        <div id="warning-source" class="source-code">khairullah.fire({type: 'warning'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'info'})">Info</button>
-        <button class="source-btn" onclick="toggleSource('info-source')">View Source</button>
-        <div id="info-source" class="source-code">khairullah.fire({type: 'info'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'confirm', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save'})">Confirm</button>
-        <button class="source-btn" onclick="toggleSource('confirm-source')">View Source</button>
-        <div id="confirm-source" class="source-code">khairullah.fire({type: 'confirm', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'delete', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'})">Delete</button>
-        <button class="source-btn" onclick="toggleSource('delete-source')">View Source</button>
-        <div id="delete-source" class="source-code">khairullah.fire({type: 'delete', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'confirmDelete', showDenyButton: true, showCancelButton: true})">Confirm Delete</button>
-        <button class="source-btn" onclick="toggleSource('confirmDelete-source')">View Source</button>
-        <div id="confirmDelete-source" class="source-code">khairullah.fire({type: 'confirmDelete', showDenyButton: true, showCancelButton: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'save'})">Save</button>
-        <button class="source-btn" onclick="toggleSource('save-source')">View Source</button>
-        <div id="save-source" class="source-code">khairullah.fire({type: 'save'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'load'})">Load</button>
-        <button class="source-btn" onclick="toggleSource('load-source')">View Source</button>
-        <div id="load-source" class="source-code">khairullah.fire({type: 'load'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'upload'})">Upload</button>
-        <button class="source-btn" onclick="toggleSource('upload-source')">View Source</button>
-        <div id="upload-source" class="source-code">khairullah.fire({type: 'upload'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'download'})">Download</button>
-        <button class="source-btn" onclick="toggleSource('download-source')">View Source</button>
-        <div id="download-source" class="source-code">khairullah.fire({type: 'download'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'timeout'})">Timeout</button>
-        <button class="source-btn" onclick="toggleSource('timeout-source')">View Source</button>
-        <div id="timeout-source" class="source-code">khairullah.fire({type: 'timeout'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'login'})">Login</button>
-        <button class="source-btn" onclick="toggleSource('login-source')">View Source</button>
-        <div id="login-source" class="source-code">khairullah.fire({type: 'login'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'logout'})">Logout</button>
-        <button class="source-btn" onclick="toggleSource('logout-source')">View Source</button>
-        <div id="logout-source" class="source-code">khairullah.fire({type: 'logout'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'limit'})">Limit</button>
-        <button class="source-btn" onclick="toggleSource('limit-source')">View Source</button>
-        <div id="limit-source" class="source-code">khairullah.fire({type: 'limit'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'network'})">Network</button>
-        <button class="source-btn" onclick="toggleSource('network-source')">View Source</button>
-        <div id="network-source" class="source-code">khairullah.fire({type: 'network'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'update'})">Update</button>
-        <button class="source-btn" onclick="toggleSource('update-source')">View Source</button>
-        <div id="update-source" class="source-code">khairullah.fire({type: 'update'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'attention', showCancelButton: true})">Attention</button>
-        <button class="source-btn" onclick="toggleSource('attention-source')">View Source</button>
-        <div id="attention-source" class="source-code">khairullah.fire({type: 'attention', showCancelButton: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'permission'})">Permission</button>
-        <button class="source-btn" onclick="toggleSource('permission-source')">View Source</button>
-        <div id="permission-source" class="source-code">khairullah.fire({type: 'permission'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'retry'})">Retry</button>
-        <button class="source-btn" onclick="toggleSource('retry-source')">View Source</button>
-        <div id="retry-source" class="source-code">khairullah.fire({type: 'retry'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'submitted'})">Submitted</button>
-        <button class="source-btn" onclick="toggleSource('submitted-source')">View Source</button>
-        <div id="submitted-source" class="source-code">khairullah.fire({type: 'submitted'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'question', showDenyButton: true, showCancelButton: true})">Question</button>
-        <button class="source-btn" onclick="toggleSource('question-source')">View Source</button>
-        <div id="question-source" class="source-code">khairullah.fire({type: 'question', showDenyButton: true, showCancelButton: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'processing'})">Processing</button>
-        <button class="source-btn" onclick="toggleSource('processing-source')">View Source</button>
-        <div id="processing-source" class="source-code">khairullah.fire({type: 'processing'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'cancelled'})">Cancelled</button>
-        <button class="source-btn" onclick="toggleSource('cancelled-source')">View Source</button>
-        <div id="cancelled-source" class="source-code">khairullah.fire({type: 'cancelled'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'blocked'})">Blocked</button>
-        <button class="source-btn" onclick="toggleSource('blocked-source')">View Source</button>
-        <div id="blocked-source" class="source-code">khairullah.fire({type: 'blocked'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'notification', position: 'top-end', timer: 1500})">Notification</button>
-        <button class="source-btn" onclick="toggleSource('notification-source')">View Source</button>
-        <div id="notification-source" class="source-code">khairullah.fire({type: 'notification', position: 'top-end', timer: 1500})</div>
+
+      <h3>New Alerts</h3>
+      <div class="alert-section">
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'normal'})">
+            Normal Alert
+          </button>
+          <button class="source-btn" onclick="toggleSource('normal-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('normal-source')">
+            Copy
+          </button>
+          <div id="normal-source" class="source-code">
+            khairullah.fire({ type: 'normal' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'basic'})">
+            Basic Alert
+          </button>
+          <button class="source-btn" onclick="toggleSource('basic-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('basic-source')">
+            Copy
+          </button>
+          <div id="basic-source" class="source-code">
+            khairullah.fire({ type: 'basic' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'titleText'})">
+            Title & Text
+          </button>
+          <button class="source-btn" onclick="toggleSource('titleText-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('titleText-source')">
+            Copy
+          </button>
+          <div id="titleText-source" class="source-code">
+            khairullah.fire({ type: 'titleText' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'errorFooter', footer: '<a href=\'#\'>Why do I have this issue?</a>'})"
+          >
+            Error with Footer
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('errorFooter-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('errorFooter-source')">
+            Copy
+          </button>
+          <div id="errorFooter-source" class="source-code">
+            khairullah.fire({ type: 'errorFooter', footer: '<a href="#"
+              >Why do I have this issue?</a
+            >' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'longContent', text: 'This is a long content alert with multiple lines of text to demonstrate scrolling behavior in khairullahAlert. '.repeat(5)})"
+          >
+            Long Content
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('longContent-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('longContent-source')">
+            Copy
+          </button>
+          <div id="longContent-source" class="source-code">
+            khairullah.fire({ type: 'longContent', text: 'This is a long content
+            alert with multiple lines of text to demonstrate scrolling behavior
+            in khairullahAlert. '.repeat(5) })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button onclick="khairullah.fire({type: 'draggable'})">
+            Draggable Alert
+          </button>
+          <button class="source-btn" onclick="toggleSource('draggable-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('draggable-source')">
+            Copy
+          </button>
+          <div id="draggable-source" class="source-code">
+            khairullah.fire({ type: 'draggable' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'customHtml', html: '<p>You can use <b>bold text</b>, <a href=\'#\'>links</a> and other HTML tags</p>', showCloseButton: true, showCancelButton: true, showDenyButton: true, confirmButtonText: 'Confirm', denyButtonText: 'Deny', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { console.log('CustomHtml alert confirmed'); } else if (result.isDenied) { console.log('CustomHtml alert denied'); } })"
+          >
+            Custom HTML
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('customHtml-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('customHtml-source')">
+            Copy
+          </button>
+          <div id="customHtml-source" class="source-code">
+            khairullah.fire({ type: 'customHtml', html: '
+            <p>
+              You can use <b>bold text</b>, <a href="#">links</a> and other HTML
+              tags
+            </p>
+            ', showCloseButton: true, showCancelButton: true, showDenyButton:
+            true, confirmButtonText: 'Confirm', denyButtonText: 'Deny',
+            cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { console.log('CustomHtml alert confirmed'); }
+            else if (result.isDenied) { console.log('CustomHtml alert denied');
+            } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'threeButtons', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'threeButtonsSuccess'}); } else if (result.isDenied) { khairullah.fire({type: 'threeButtonsInfo'}); } else { khairullah.fire({type: 'confirmCancelled'}); } })"
+          >
+            Three Buttons
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('threeButtons-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('threeButtons-source')">
+            Copy
+          </button>
+          <div id="threeButtons-source" class="source-code">
+            khairullah.fire({ type: 'threeButtons', showDenyButton: true,
+            showCancelButton: true, confirmButtonText: 'Save', denyButtonText:
+            'Don\'t save', cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { khairullah.fire({ type: 'threeButtonsSuccess'
+            }); } else if (result.isDenied) { khairullah.fire({ type:
+            'threeButtonsInfo' }); } else { khairullah.fire({ type:
+            'confirmCancelled' }); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'topEnd', position: 'top-end', timer: 1500})"
+          >
+            Top Right Toast
+          </button>
+          <button class="source-btn" onclick="toggleSource('topEnd-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('topEnd-source')">
+            Copy
+          </button>
+          <div id="topEnd-source" class="source-code">
+            khairullah.fire({ type: 'topEnd', position: 'top-end', timer: 1500
+            })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'customAnim', didOpen: () => { document.getElementById('alertBox').style.animation = 'bounceIn 0.5s'; }})"
+          >
+            Custom Animation
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('customAnim-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('customAnim-source')">
+            Copy
+          </button>
+          <div id="customAnim-source" class="source-code">
+            khairullah.fire({ type: 'customAnim', didOpen: () => {
+            document.getElementById('alertBox').style.animation = 'bounceIn
+            0.5s'; } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'confirmDeleteFn', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'confirmDeleteFnSuccess'}); } else { khairullah.fire({type: 'confirmCancelled'}); } })"
+          >
+            Confirm Delete with Function
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('confirmDeleteFn-source')"
+          >
+            View Source
+          </button>
+          <button
+            class="copy-btn"
+            onclick="copySource('confirmDeleteFn-source')"
+          >
+            Copy
+          </button>
+          <div id="confirmDeleteFn-source" class="source-code">
+            khairullah.fire({ type: 'confirmDeleteFn', showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No,
+            cancel!' }).then((result) => { if (result.isConfirmed) {
+            khairullah.fire({ type: 'confirmDeleteFnSuccess' }); } else {
+            khairullah.fire({ type: 'confirmCancelled' }); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'bootstrap', showCancelButton: true, reverseButtons: true, confirmButtonText: 'Confirm', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { console.log('Bootstrap alert confirmed'); } })"
+          >
+            Bootstrap Style
+          </button>
+          <button class="source-btn" onclick="toggleSource('bootstrap-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('bootstrap-source')">
+            Copy
+          </button>
+          <div id="bootstrap-source" class="source-code">
+            khairullah.fire({ type: 'bootstrap', showCancelButton: true,
+            reverseButtons: true, confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { console.log('Bootstrap alert confirmed'); }
+            })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'customImage', imageUrl: 'https://unsplash.it/400/200', imageWidth: 400, imageHeight: 200, imageAlt: 'Custom image'})"
+          >
+            Custom Image
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('customImage-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('customImage-source')">
+            Copy
+          </button>
+          <div id="customImage-source" class="source-code">
+            khairullah.fire({ type: 'customImage', imageUrl:
+            'https://unsplash.it/400/200', imageWidth: 400, imageHeight: 200,
+            imageAlt: 'Custom image' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'customStyle', width: 600, padding: '30px', color: '#fff', background: '#4546b9'})"
+          >
+            Custom Style
+          </button>
+          <button
+            class="source-btn"
+            onclick="toggleSource('customStyle-source')"
+          >
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('customStyle-source')">
+            Copy
+          </button>
+          <div id="customStyle-source" class="source-code">
+            khairullah.fire({ type: 'customStyle', width: 600, padding: '30px',
+            color: '#fff', background: '#4546b9' })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'timer', timer: 2000, timerProgressBar: true})"
+          >
+            Auto Close Timer
+          </button>
+          <button class="source-btn" onclick="toggleSource('timer-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('timer-source')">
+            Copy
+          </button>
+          <div id="timer-source" class="source-code">
+            khairullah.fire({ type: 'timer', timer: 2000, timerProgressBar: true
+            })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'rtl', showCloseButton: true, showCancelButton: true, confirmButtonText: 'Confirm', cancelButtonText: 'Cancel'}).then((result) => { if (result.isConfirmed) { console.log('RTL alert confirmed'); } })"
+          >
+            RTL Alert
+          </button>
+          <button class="source-btn" onclick="toggleSource('rtl-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('rtl-source')">
+            Copy
+          </button>
+          <div id="rtl-source" class="source-code">
+            khairullah.fire({ type: 'rtl', showCloseButton: true,
+            showCancelButton: true, confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel' }).then((result) => { if
+            (result.isConfirmed) { console.log('RTL alert confirmed'); } })
+          </div>
+        </div>
+        <div class="alert-item">
+          <button
+            onclick="khairullah.fire({type: 'ajax', input: 'text', inputAttributes: { placeholder: 'Enter your Github username' }, showCancelButton: true, showLoaderOnConfirm: true, confirmButtonText: 'Look up', cancelButtonText: 'Cancel', preConfirm: async (username) => { try { const response = await fetch(`https://api.github.com/users/${username}`); if (!response.ok) throw new Error('User not found'); return await response.json(); } catch (error) { return { error: error.message }; } } }).then((result) => { if (result.isConfirmed && result.value && !result.value.error) { khairullah.fire({type: 'ajaxSuccess', text: `Github user: ${result.value.login}`}); } else if (result.isConfirmed) { khairullah.fire({type: 'ajaxError', text: result.value.error}); } })"
+          >
+            AJAX Request
+          </button>
+          <button class="source-btn" onclick="toggleSource('ajax-source')">
+            View Source
+          </button>
+          <button class="copy-btn" onclick="copySource('ajax-source')">
+            Copy
+          </button>
+          <div id="ajax-source" class="source-code">
+            khairullah.fire({ type: 'ajax', input: 'text', inputAttributes: {
+            placeholder: 'Enter your Github username' }, showCancelButton: true,
+            showLoaderOnConfirm: true, confirmButtonText: 'Look up',
+            cancelButtonText: 'Cancel', preConfirm: async (username) => { try {
+            const response = await
+            fetch(`https://api.github.com/users/${username}`); if (!response.ok)
+            throw new Error('User not found'); return await response.json(); }
+            catch (error) { return { error: error.message }; } }
+            }).then((result) => { if (result.isConfirmed && result.value &&
+            !result.value.error) { khairullah.fire({ type: 'ajaxSuccess', text:
+            `Github user: ${result.value.login}` }); } else if
+            (result.isConfirmed) { khairullah.fire({ type: 'ajaxError', text:
+            result.value.error }); } })
+          </div>
+        </div>
       </div>
     </div>
 
-    <h3>New Alerts</h3>
-    <div class="alert-section">
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'normal'})">Normal Alert</button>
-        <button class="source-btn" onclick="toggleSource('normal-source')">View Source</button>
-        <div id="normal-source" class="source-code">khairullah.fire({type: 'normal'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'basic'})">Basic Alert</button>
-        <button class="source-btn" onclick="toggleSource('basic-source')">View Source</button>
-        <div id="basic-source" class="source-code">khairullah.fire({type: 'basic'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'titleText'})">Title & Text</button>
-        <button class="source-btn" onclick="toggleSource('titleText-source')">View Source</button>
-        <div id="titleText-source" class="source-code">khairullah.fire({type: 'titleText'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'errorFooter', footer: '<a href=\'#\'>Why do I have this issue?</a>'})">Error with Footer</button>
-        <button class="source-btn" onclick="toggleSource('errorFooter-source')">View Source</button>
-        <div id="errorFooter-source" class="source-code">khairullah.fire({type: 'errorFooter', footer: '<a href=\'#\'>Why do I have this issue?</a>'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'longContent', text: 'This is a long content alert with multiple lines of text to demonstrate scrolling behavior in khairullahAlert. '.repeat(5)})">Long Content</button>
-        <button class="source-btn" onclick="toggleSource('longContent-source')">View Source</button>
-        <div id="longContent-source" class="source-code">khairullah.fire({type: 'longContent', text: 'This is a long content alert with multiple lines of text to demonstrate scrolling behavior in khairullahAlert. '.repeat(5)})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'draggable'})">Draggable Alert</button>
-        <button class="source-btn" onclick="toggleSource('draggable-source')">View Source</button>
-        <div id="draggable-source" class="source-code">khairullah.fire({type: 'draggable'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'customHtml', html: '<p>You can use <b>bold text</b>, <a href=\'#\'>links</a> and other HTML tags</p>', showCloseButton: true, showCancelButton: true, showDenyButton: true})">Custom HTML</button>
-        <button class="source-btn" onclick="toggleSource('customHtml-source')">View Source</button>
-        <div id="customHtml-source" class="source-code">khairullah.fire({type: 'customHtml', html: '<p>You can use <b>bold text</b>, <a href=\'#\'>links</a> and other HTML tags</p>', showCloseButton: true, showCancelButton: true, showDenyButton: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'threeButtons', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save'})">Three Buttons</button>
-        <button class="source-btn" onclick="toggleSource('threeButtons-source')">View Source</button>
-        <div id="threeButtons-source" class="source-code">khairullah.fire({type: 'threeButtons', showDenyButton: true, showCancelButton: true, confirmButtonText: 'Save', denyButtonText: 'Don\'t save'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'topEnd', position: 'top-end', timer: 1500})">Top Right Toast</button>
-        <button class="source-btn" onclick="toggleSource('topEnd-source')">View Source</button>
-        <div id="topEnd-source" class="source-code">khairullah.fire({type: 'topEnd', position: 'top-end', timer: 1500})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'customAnim', didOpen: () => { document.getElementById('alertBox').style.animation = 'bounceIn 0.5s'; }})">Custom Animation</button>
-        <button class="source-btn" onclick="toggleSource('customAnim-source')">View Source</button>
-        <div id="customAnim-source" class="source-code">khairullah.fire({type: 'customAnim', didOpen: () => { document.getElementById('alertBox').style.animation = 'bounceIn 0.5s'; }})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'confirmDeleteFn', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'success', title: 'Deleted!', text: 'Your file has been deleted.'}); } })">Confirm Delete with Function</button>
-        <button class="source-btn" onclick="toggleSource('confirmDeleteFn-source')">View Source</button>
-        <div id="confirmDeleteFn-source" class="source-code">khairullah.fire({type: 'confirmDeleteFn', showCancelButton: true, confirmButtonText: 'Yes, delete it!', cancelButtonText: 'No, cancel!'}).then((result) => { if (result.isConfirmed) { khairullah.fire({type: 'success', title: 'Deleted!', text: 'Your file has been deleted.'}); } })</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'bootstrap', showCancelButton: true, reverseButtons: true})">Bootstrap Style</button>
-        <button class="source-btn" onclick="toggleSource('bootstrap-source')">View Source</button>
-        <div id="bootstrap-source" class="source-code">khairullah.fire({type: 'bootstrap', showCancelButton: true, reverseButtons: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'customImage', imageUrl: 'https://unsplash.it/400/200', imageWidth: 400, imageHeight: 200, imageAlt: 'Custom image'})">Custom Image</button>
-        <button class="source-btn" onclick="toggleSource('customImage-source')">View Source</button>
-        <div id="customImage-source" class="source-code">khairullah.fire({type: 'customImage', imageUrl: 'https://unsplash.it/400/200', imageWidth: 400, imageHeight: 200, imageAlt: 'Custom image'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'customStyle', width: 600, padding: '30px', color: '#fff', background: '#4546b9'})">Custom Style</button>
-        <button class="source-btn" onclick="toggleSource('customStyle-source')">View Source</button>
-        <div id="customStyle-source" class="source-code">khairullah.fire({type: 'customStyle', width: 600, padding: '30px', color: '#fff', background: '#4546b9'})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'timer', timer: 2000, timerProgressBar: true})">Auto Close Timer</button>
-        <button class="source-btn" onclick="toggleSource('timer-source')">View Source</button>
-        <div id="timer-source" class="source-code">khairullah.fire({type: 'timer', timer: 2000, timerProgressBar: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'rtl', showCloseButton: true, showCancelButton: true})">RTL Alert</button>
-        <button class="source-btn" onclick="toggleSource('rtl-source')">View Source</button>
-        <div id="rtl-source" class="source-code">khairullah.fire({type: 'rtl', showCloseButton: true, showCancelButton: true})</div>
-      </div>
-      <div class="alert-item">
-        <button onclick="khairullah.fire({type: 'ajax', input: 'text', inputAttributes: { placeholder: 'Enter your Github username' }, showCancelButton: true, showLoaderOnConfirm: true, preConfirm: async (username) => { try { const response = await fetch(`https://api.github.com/users/${username}`); if (!response.ok) throw new Error('User not found'); return await response.json(); } catch (error) { return { error: error.message }; } } }).then((result) => { if (result.isConfirmed && result.value) { khairullah.fire({type: 'success', title: 'Success!', text: `Github user: ${result.value.login}`}); } })">AJAX Request</button>
-        <button class="source-btn" onclick="toggleSource('ajax-source')">View Source</button>
-        <div id="ajax-source" class="source-code">khairullah.fire({type: 'ajax', input: 'text', inputAttributes: { placeholder: 'Enter your Github username' }, showCancelButton: true, showLoaderOnConfirm: true, preConfirm: async (username) => { try { const response = await fetch(`https://api.github.com/users/${username}`); if (!response.ok) throw new Error('User not found'); return await response.json(); } catch (error) { return { error: error.message }; } } }).then((result) => { if (result.isConfirmed && result.value) { khairullah.fire({type: 'success', title: 'Success!', text: `Github user: ${result.value.login}`}); } })</div>
-      </div>
-    </div>
-  </div>
+    <script src="alert.js"></script>
+    <script>
+      function toggleSource(id) {
+        const element = document.getElementById(id);
+        element.classList.toggle("show");
+      }
 
-  <script src="./alert.js"></script>
-  <script>
-    function toggleSource(id) {
-      const element = document.getElementById(id);
-      element.classList.toggle('show');
-    }
-  </script>
-</body>
+      function copySource(id) {
+        const source = document.getElementById(id).textContent;
+        navigator.clipboard
+          .writeText(source)
+          .then(() => {
+            const btn = document.querySelector(
+              `button[onclick="copySource('${id}')"]`
+            );
+            btn.textContent = "Copied!";
+            setTimeout(() => {
+              btn.textContent = "Copy";
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy:", err);
+          });
+      }
+    </script>
+  </body>
 </html>
