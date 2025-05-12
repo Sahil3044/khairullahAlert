@@ -1,35 +1,293 @@
 {
   "alerts": {
-    "success": { "en": { "title": "Success", "text": "Operation completed." }, "ps": { "title": "بری", "text": "عملیات بریالی شو." }, "fa": { "title": "موفقیت", "text": "عملیات موفق شد." } },
-    "error": { "en": { "title": "Error", "text": "Something went wrong." }, "ps": { "title": "تېروتنه", "text": "یو څه غلط شول." }, "fa": { "title": "خطا", "text": "مشکلی پیش آمد." } },
-    "warning": { "en": { "title": "Warning", "text": "Check your input." }, "ps": { "title": "خبرتیا", "text": "خپله ننوتنه وګورئ." }, "fa": { "title": "هشدار", "text": "ورودی خود را بررسی کنید." } },
-    "info": { "en": { "title": "Info", "text": "Here is some info." }, "ps": { "title": "معلوماتکول", "text": "دلته ځینې معلومات دي." }, "fa": { "title": "اطلاعات", "text": "اینجا اطلاعاتی است." } },
-    "confirm": { "en": { "title": "Confirm", "text": "Are you sure?" }, "ps": { "title": "تصدیق", "text": "ایا تاسو یقیني یاست؟" }, "fa": { "title": "تأیید", "text": "آیا مطمئن هستید؟" } },
-    "delete": { "en": { "title": "Delete", "text": "Delete this item?" }, "ps": { "title": "ړنګ کول", "text": "دا توکی حذف کړئ؟" }, "fa": { "title": "حذف", "text": "این مورد را حذف کنید؟" } },
-    "confirmDelete": { "en": { "title": "Confirm Delete", "text": "Really delete this item?" }, "ps": { "title": "د حذف تصدیق", "text": "ریښتیا دا توکی حذف کړئ؟" }, "fa": { "title": "تأیید حذف", "text": "واقعاً این مورد را حذف کنید؟" } },
-    "save": { "en": { "title": "Saved", "text": "Data saved." }, "ps": { "title": "ثبت شو", "text": "معلومات ثبت شول." }, "fa": { "title": "ذخیره شد", "text": "داده‌ها ذخیره شدند." } },
-    "load": { "en": { "title": "Loading", "text": "Please wait..." }, "ps": { "title": "پورته کول", "text": "مهرباني وکړئ انتظار وکړئ..." }, "fa": { "title": "بارگذاری", "text": "لطفاً صبر کنید..." } },
-    "upload": { "en": { "title": "Uploading", "text": "File uploading..." }, "ps": { "title": "پورته کول", "text": "فایل پورته کیږي..." }, "fa": { "title": "بارگذاری", "text": "فایل در حال بارگذاری..." } },
-    "download": { "en": { "title": "Downloading", "text": "File downloading..." }, "ps": { "title": "کښته کول", "text": "فایل ډاونلوډ کیږي..." }, "fa": { "title": "دانلود", "text": "فایل در حال دانلود..." } },
-    "timeout": { "en": { "title": "Timeout", "text": "Session expired." }, "ps": { "title": "مهلت ختم شو", "text": "ناسته ختمه شوه." }, "fa": { "title": "انقضا", "text": "جلسه منقضی شد." } },
-    "login": { "en": { "title": "Login", "text": "Logged in." }, "ps": { "title": "ننوتل", "text": "ننوتل." }, "fa": { "title": "ورود", "text": "وارد شدید." } },
-    "logout": { "en": { "title": "Logout", "text": "Logged out." }, "ps": { "title": "وتل", "text": "ووتئ." }, "fa": { "title": "خروج", "text": "خارج شدید." } },
-    "limit": { "en": { "title": "Limit", "text": "Limit reached." }, "ps": { "title": "محدودیت", "text": "حد ته رسیدلي یاست." }, "fa": { "title": "محدودیت", "text": "به حد رسیدید." } },
-    "network": { "en": { "title": "Network Error", "text": "No connection." }, "ps": { "title": "شبکه تېروتنه", "text": "انټرنټ نشته." }, "fa": { "title": "خطای شبکه", "text": "اتصال وجود ندارد." } },
-    "update": { "en": { "title": "Update", "text": "Update completed." }, "ps": { "title": "نوی کول", "text": "نوی کول بریالی شو." }, "fa": { "title": "بروزرسانی", "text": "بروزرسانی انجام شد." } },
-    "attention": { "en": { "title": "Attention", "text": "Pay attention." }, "ps": { "title": "پاملرنه", "text": "پام وکړئ." }, "fa": { "title": "توجه", "text": "توجه کنید." } },
-    "permission": { "en": { "title": "Permission", "text": "Access denied." }, "ps": { "title": "اجازه رد شوه", "text": "لاسرسی رد شوی دی." }, "fa": { "title": "عدم دسترسی", "text": "دسترسی رد شد." } },
-    "retry": { "en": { "title": "Retry", "text": "Try again." }, "ps": { "title": "بیا هڅه", "text": "بیا هڅه وکړئ." }, "fa": { "title": "تلاش مجدد", "text": "دوباره تلاش کنید." } },
-    "submitted": { "en": { "title": "Submitted", "text": "Form submitted." }, "ps": { "title": "سپارل شوی", "text": "فورمه وسپارل شوه." }, "fa": { "title": "ارسال شد", "text": "فرم ارسال شد." } },
-    "question": { "en": { "title": "Question", "text": "Do you have a question?" }, "ps": { "title": "پوښتنه", "text": "ایا تاسو پوښتنه لرئ؟" }, "fa": { "title": "سوال", "text": "آیا سوالی دارید؟" } },
-    "processing": { "en": { "title": "Processing", "text": "Processing request..." }, "ps": { "title": "پروسس کول", "text": "غوښتنه پروسس کیږي..." }, "fa": { "title": "در حال پردازش", "text": "در حال پردازش درخواست..." } },
-    "cancelled": { "en": { "title": "Cancelled", "text": "Action cancelled." }, "ps": { "title": "لغوه شوه", "text": "عمل لغوه شو." }, "fa": { "title": "لغو شد", "text": "عملیات لغو شد." } },
-    "blocked": { "en": { "title": "Blocked", "text": "Action blocked." }, "ps": { "title": "بند شوی", "text": "عمل بند شوی دی." }, "fa": { "title": "مسدود شد", "text": "عملیات مسدود شد." } },
-    "notification": { "en": { "title": "Notification", "text": "You have a new message." }, "ps": { "title": "خبرتیا", "text": "تاسو نوی پیغام لرئ." }, "fa": { "title": "اعلان", "text": "شما پیام جدیدی دارید." } }
+    "normal": {
+      "en": { "title": "", "text": "You clicked the button!" },
+      "ps": { "title": "", "text": "تاسو تڼۍ کلیک کړه!" },
+      "fa": { "title": "", "text": "شما روی دکمه کلیک کردید!" }
+    },
+    "success": {
+      "en": { "title": "Good job!", "text": "You clicked the button!" },
+      "ps": { "title": "ښه کار!", "text": "تاسو تڼۍ کلیک کړه!" },
+      "fa": { "title": "آفرین!", "text": "شما روی دکمه کلیک کردید!" }
+    },
+    "error": {
+      "en": { "title": "Oops...", "text": "Something went wrong!" },
+      "ps": { "title": "اوپس...", "text": "یو څه غلط شول!" },
+      "fa": { "title": "اوه...", "text": "مشکلی پیش آمد!" }
+    },
+    "warning": {
+      "en": { "title": "Warning", "text": "Check your input." },
+      "ps": { "title": "خبرتیا", "text": "خپله ننوتنه وګورئ." },
+      "fa": { "title": "هشدار", "text": "ورودی خود را بررسی کنید." }
+    },
+    "info": {
+      "en": { "title": "Info", "text": "Here is some info." },
+      "ps": { "title": "معلومات", "text": "دلته ځینې معلومات دي." },
+      "fa": { "title": "اطلاعات", "text": "اینجا اطلاعاتی است." }
+    },
+    "confirm": {
+      "en": { "title": "Do you want to save the changes?", "text": "" },
+      "ps": { "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟", "text": "" },
+      "fa": { "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟", "text": "" }
+    },
+    "delete": {
+      "en": {
+        "title": "Are you sure?",
+        "text": "You won't be able to revert this!"
+      },
+      "ps": {
+        "title": "ایا تاسو یقیني یاست؟",
+        "text": "تاسو به دا بیرته نه شئ راګرځولی!"
+      },
+      "fa": {
+        "title": "آیا مطمئن هستید؟",
+        "text": "شما نمی‌توانید این را بازگردانید!"
+      }
+    },
+    "confirmDelete": {
+      "en": { "title": "Confirm Delete", "text": "Really delete this item?" },
+      "ps": { "title": "د حذف تصدیق", "text": "ریښتیا دا توکی حذف کړئ؟" },
+      "fa": { "title": "تأیید حذف", "text": "واقعاً این مورد را حذف کنید؟" }
+    },
+    "save": {
+      "en": { "title": "Saved", "text": "Data saved." },
+      "ps": { "title": "ثبت شو", "text": "معلومات ثبت شول." },
+      "fa": { "title": "ذخیره شد", "text": "داده‌ها ذخیره شدند." }
+    },
+    "load": {
+      "en": { "title": "Loading", "text": "Please wait..." },
+      "ps": { "title": "پورته کول", "text": "مهرباني وکړئ انتظار وکړئ..." },
+      "fa": { "title": "بارگذاری", "text": "لطفاً صبر کنید..." }
+    },
+    "upload": {
+      "en": { "title": "Uploading", "text": "File uploading..." },
+      "ps": { "title": "پورته کول", "text": "فایل پورته کیږي..." },
+      "fa": { "title": "بارگذاری", "text": "فایل در حال بارگذاری..." }
+    },
+    "download": {
+      "en": { "title": "Downloading", "text": "File downloading..." },
+      "ps": { "title": "کښته کول", "text": "فایل ډاونلوډ کیږي..." },
+      "fa": { "title": "دانلود", "text": "فایل در حال دانلود..." }
+    },
+    "timeout": {
+      "en": { "title": "Timeout", "text": "Session expired." },
+      "ps": { "title": "مهلت ختم شو", "text": "ناسته ختمه شوه." },
+      "fa": { "title": "انقضا", "text": "جلسه منقضی شد." }
+    },
+    "login": {
+      "en": { "title": "Login", "text": "Logged in." },
+      "ps": { "title": "ننوتل", "text": "ننوتل." },
+      "fa": { "title": "ورود", "text": "وارد شدید." }
+    },
+    "logout": {
+      "en": { "title": "Logout", "text": "Logged out." },
+      "ps": { "title": "وتل", "text": "ووتئ." },
+      "fa": { "title": "خروج", "text": "خارج شدید." }
+    },
+    "limit": {
+      "en": { "title": "Limit", "text": "Limit reached." },
+      "ps": { "title": "محدودیت", "text": "حد ته رسیدلي یاست." },
+      "fa": { "title": "محدودیت", "text": "به حد رسیدید." }
+    },
+    "network": {
+      "en": { "title": "Network Error", "text": "No connection." },
+      "ps": { "title": "شبکه تېروتنه", "text": "انټرنټ نشته." },
+      "fa": { "title": "خطای شبکه", "text": "اتصال وجود ندارد." }
+    },
+    "update": {
+      "en": { "title": "Update", "text": "Update completed." },
+      "ps": { "title": "نوی کول", "text": "نوی کول بریالی شو." },
+      "fa": { "title": "بروزرسانی", "text": "بروزرسانی انجام شد." }
+    },
+    "attention": {
+      "en": { "title": "Attention", "text": "Pay attention." },
+      "ps": { "title": "پاملرنه", "text": "پام وکړئ." },
+      "fa": { "title": "توجه", "text": "توجه کنید." }
+    },
+    "permission": {
+      "en": { "title": "Permission", "text": "Access denied." },
+      "ps": { "title": "اجازه رد شوه", "text": "لاسرسی رد شوی دی." },
+      "fa": { "title": "عدم دسترسی", "text": "دسترسی رد شد." }
+    },
+    "retry": {
+      "en": { "title": "Retry", "text": "Try again." },
+      "ps": { "title": "بیا هڅه", "text": "بیا هڅه وکړئ." },
+      "fa": { "title": "تلاش مجدد", "text": "دوباره تلاش کنید." }
+    },
+    "submitted": {
+      "en": { "title": "Submitted", "text": "Form submitted." },
+      "ps": { "title": "سپارل شوی", "text": "فورمه وسپارل شوه." },
+      "fa": { "title": "ارسال شد", "text": "فرم ارسال شد." }
+    },
+    "question": {
+      "en": { "title": "The Internet?", "text": "That thing is still around?" },
+      "ps": { "title": "انټرنیټ؟", "text": "دا شی اوس هم شته؟" },
+      "fa": { "title": "اینترنت؟", "text": "آن چیز هنوز وجود دارد؟" }
+    },
+    "processing": {
+      "en": { "title": "Processing", "text": "Processing request..." },
+      "ps": { "title": "پروسس کول", "text": "غوښتنه پروسس کیږي..." },
+      "fa": { "title": "در حال پردازش", "text": "در حال پردازش درخواست..." }
+    },
+    "cancelled": {
+      "en": { "title": "Cancelled", "text": "Action cancelled." },
+      "ps": { "title": "لغوه شوه", "text": "عمل لغوه شو." },
+      "fa": { "title": "لغو شد", "text": "عملیات لغو شد." }
+    },
+    "blocked": {
+      "en": { "title": "Blocked", "text": "Action blocked." },
+      "ps": { "title": "بند شوی", "text": "عمل بند شوی دی." },
+      "fa": { "title": "مسدود شد", "text": "عملیات مسدود شد." }
+    },
+    "notification": {
+      "en": { "title": "Your work has been saved", "text": "" },
+      "ps": { "title": "ستاسو کار ثبت شوی دی", "text": "" },
+      "fa": { "title": "کار شما ذخیره شده است", "text": "" }
+    },
+    "basic": {
+      "en": { "title": "khairullahAlert is working!", "text": "" },
+      "ps": { "title": "خیرالله خبرتیا کار کوي!", "text": "" },
+      "fa": { "title": "هشدار خیرالله کار می‌کند!", "text": "" }
+    },
+    "titleText": {
+      "en": { "title": "The Internet?", "text": "That thing is still around?" },
+      "ps": { "title": "انټرنیټ؟", "text": "دا شی اوس هم شته؟" },
+      "fa": { "title": "اینترنت؟", "text": "آن چیز هنوز وجود دارد؟" }
+    },
+    "errorFooter": {
+      "en": { "title": "Oops...", "text": "Something went wrong!" },
+      "ps": { "title": "اوپس...", "text": "یو څه غلط شول!" },
+      "fa": { "title": "اوه...", "text": "مشکلی پیش آمد!" }
+    },
+    "longContent": {
+      "en": { "title": "", "text": "" },
+      "ps": { "title": "", "text": "" },
+      "fa": { "title": "", "text": "" }
+    },
+    "draggable": {
+      "en": { "title": "Drag me!", "text": "" },
+      "ps": { "title": "زه راکش کړئ!", "text": "" },
+      "fa": { "title": "من را بکشید!", "text": "" }
+    },
+    "customHtml": {
+      "en": { "title": "<strong>HTML <u>example</u></strong>", "text": "" },
+      "ps": { "title": "<strong>د HTML <u>بېلګه</u></strong>", "text": "" },
+      "fa": { "title": "<strong>مثال <u>HTML</u></strong>", "text": "" }
+    },
+    "threeButtons": {
+      "en": { "title": "Do you want to save the changes?", "text": "" },
+      "ps": { "title": "ایا تاسو غواړئ بدلونونه ثبت کړئ؟", "text": "" },
+      "fa": { "title": "آیا می‌خواهید تغییرات را ذخیره کنید؟", "text": "" }
+    },
+    "topEnd": {
+      "en": { "title": "Your work has been saved", "text": "" },
+      "ps": { "title": "ستاسو کار ثبت شوی دی", "text": "" },
+      "fa": { "title": "کار شما ذخیره شده است", "text": "" }
+    },
+    "customAnim": {
+      "en": { "title": "Custom animation", "text": "" },
+      "ps": { "title": "دودیزه انیمیشن", "text": "" },
+      "fa": { "title": "انیمیشن سفارشی", "text": "" }
+    },
+    "confirmDeleteFn": {
+      "en": {
+        "title": "Are you sure?",
+        "text": "You won't be able to revert this!"
+      },
+      "ps": {
+        "title": "ایا تاسو یقیني یاست؟",
+        "text": "تاسو به دا بیرته نه شئ راګرځولی!"
+      },
+      "fa": {
+        "title": "آیا مطمئن هستید؟",
+        "text": "شما نمی‌توانید این را بازگردانید!"
+      }
+    },
+    "bootstrap": {
+      "en": {
+        "title": "Are you sure?",
+        "text": "You won't be able to revert this!"
+      },
+      "ps": {
+        "title": "ایا تاسو یقیني یاست؟",
+        "text": "تاسو به دا بیرته نه شئ راګرځولی!"
+      },
+      "fa": {
+        "title": "آیا مطمئن هستید؟",
+        "text": "شما نمی‌توانید این را بازگردانید!"
+      }
+    },
+    "customImage": {
+      "en": { "title": "Sweet!", "text": "Modal with a custom image." },
+      "ps": { "title": "خوږ!", "text": "د دودیز انځور سره موډل." },
+      "fa": { "title": "شیرین!", "text": "مدال با تصویر سفارشی." }
+    },
+    "customStyle": {
+      "en": {
+        "title": "Custom width, padding, color, background.",
+        "text": ""
+      },
+      "ps": { "title": "دودیزه پلنوالی، پیډینګ، رنګ، شالید.", "text": "" },
+      "fa": { "title": "عرض، padding، رنگ و پس‌زمینه سفارشی.", "text": "" }
+    },
+    "timer": {
+      "en": {
+        "title": "Auto close alert!",
+        "text": "I will close in <b></b> milliseconds."
+      },
+      "ps": {
+        "title": "خپله تړل کیدونکی خبرتیا!",
+        "text": "زه به په <b></b> ملی ثانیو کې بند شم."
+      },
+      "fa": {
+        "title": "هشدار بسته شدن خودکار!",
+        "text": "من در <b></b> میلی‌ثانیه بسته می‌شم."
+      }
+    },
+    "rtl": {
+      "en": { "title": "Would you like to continue?", "text": "" },
+      "ps": { "title": "ایا تاسو غواړئ ادامه ورکړئ؟", "text": "" },
+      "fa": { "title": "هل تريد الاستمرار؟", "text": "" }
+    },
+    "ajax": {
+      "en": { "title": "Submit your Github username", "text": "" },
+      "ps": { "title": "خپل د ګیټ‌هب کارن نوم وسپارئ", "text": "" },
+      "fa": { "title": "نام کاربری گیت‌هاب خود را وارد کنید", "text": "" }
+    }
   },
   "buttons": {
-    "en": { "ok": "OK", "confirm": "Confirm", "cancel": "Cancel", "deny": "Deny" },
-    "ps": { "ok": "سمه ده", "confirm": "تایید", "cancel": "لغوه", "deny": "رد کول" },
-    "fa": { "ok": "تأیید", "confirm": "تأیید", "cancel": "لغو", "deny": "رد" }
+    "en": {
+      "ok": "OK",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "deny": "Deny",
+      "save": "Save",
+      "dontSave": "Don't save",
+      "yesDelete": "Yes, delete it!",
+      "noCancel": "No, cancel!",
+      "lookup": "Look up"
+    },
+    "ps": {
+      "ok": "سمه ده",
+      "confirm": "تایید",
+      "cancel": "لغوه",
+      "deny": "رد کول",
+      "save": "ثبت کړئ",
+      "dontSave": "مه ثبتوئ",
+      "yesDelete": "هو، حذف یې کړئ!",
+      "noCancel": "نه، لغوه کړئ!",
+      "lookup": "پلټنه"
+    },
+    "fa": {
+      "ok": "تأیید",
+      "confirm": "تأیید",
+      "cancel": "لغو",
+      "deny": "رد",
+      "save": "ذخیره",
+      "dontSave": "ذخیره نکن",
+      "yesDelete": "بله، حذفش کن!",
+      "noCancel": "خیر، لغو کن!",
+      "lookup": "جستجو"
+    }
   }
 }
