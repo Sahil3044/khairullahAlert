@@ -1,9 +1,9 @@
 {
   "alerts": {
     "normal": {
-      "en": { "title": "Normal Alert", "text": "You clicked the button!" },
-      "ps": { "title": "نورمال خبرتیا", "text": "تاسو تڼۍ کلیک کړه!" },
-      "fa": { "title": "هشدار معمولی", "text": "شما روی دکمه کلیک کردید!" }
+      "en": { "title": " Alert", "text": "You are information updated!" },
+      "ps": { "title": " خبرتیا", "text": "ستاسو معلومات آأډیټ یعنی تازه شول!" },
+      "fa": { "title": "هشدار", "text": "معلومات سما آپډیټ ګردید!" }
     },
     "success": {
       "en": { "title": "Good job!", "text": "You clicked the button!" },
