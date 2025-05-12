@@ -46,12 +46,13 @@
   right: 20px;
   transform: translate(0, 0) scale(0.7);
   max-width: 280px;
+  animation: slideIn 0.3s ease forwards;
 }
 .alert-box.top-right.show {
   transform: translate(0, 0) scale(1);
 }
 .alert-box.top-right.hide {
-  transform: translate(0, 0) scale(0.7);
+  animation: slideOut 0.3s ease forwards;
 }
 .alert-box svg {
   width: 48px;
@@ -101,12 +102,20 @@
 .alert-box .alert-cancel-btn:hover {
   background: #b32d2d;
 }
+.alert-box .alert-deny-btn {
+  background: #6c757d;
+  color: #fff;
+}
+.alert-box .alert-deny-btn:hover {
+  background: #5a6268;
+}
 .alert-box.success { border: 2px solid #28a745; }
 .alert-box.error { border: 2px solid #dc3545; }
 .alert-box.warning { border: 2px solid #ffc107; }
 .alert-box.info { border: 2px solid #17a2b8; }
 .alert-box.confirm { border: 2px solid #3085d6; }
 .alert-box.delete { border: 2px solid #c82333; }
+.alert-box.confirmDelete { border: 2px solid #c82333; }
 .alert-box.save { border: 2px solid #28a745; }
 .alert-box.load { border: 2px solid #6f42c1; }
 .alert-box.upload { border: 2px solid #17a2b8; }
@@ -130,6 +139,14 @@
   0% { transform: scale(0); }
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
 }
 @media (max-width: 600px) {
   .alert-box {
