@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -24,12 +24,13 @@
   max-width: 400px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 20px;
   z-index: 10000;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .alert-box.show {
   display: block;
@@ -54,7 +55,8 @@
 .alert-box.top-right.hide {
   animation: slideOut 0.3s ease forwards;
 }
-.alert-box svg {
+.alert-box svg,
+.alert-box img {
   width: 48px;
   height: 48px;
   margin-bottom: 12px;
@@ -64,12 +66,11 @@
   margin: 0 0 8px;
   font-size: 20px;
   font-weight: 600;
-  color: #222;
 }
-.alert-box p {
+.alert-box p,
+.alert-box #alertContent {
   margin: 0 0 16px;
   font-size: 14px;
-  color: #444;
 }
 .alert-box .buttons {
   display: flex;
@@ -109,44 +110,209 @@
 .alert-box .alert-deny-btn:hover {
   background: #5a6268;
 }
-.alert-box.success { border: 2px solid #28a745; }
-.alert-box.error { border: 2px solid #dc3545; }
-.alert-box.warning { border: 2px solid #ffc107; }
-.alert-box.info { border: 2px solid #17a2b8; }
-.alert-box.confirm { border: 2px solid #3085d6; }
-.alert-box.delete { border: 2px solid #c82333; }
-.alert-box.confirmDelete { border: 2px solid #c82333; }
-.alert-box.save { border: 2px solid #28a745; }
-.alert-box.load { border: 2px solid #6f42c1; }
-.alert-box.upload { border: 2px solid #17a2b8; }
-.alert-box.download { border: 2px solid #28a745; }
-.alert-box.timeout { border: 2px solid #fd7e14; }
-.alert-box.login { border: 2px solid #28a745; }
-.alert-box.logout { border: 2px solid #6c757d; }
-.alert-box.limit { border: 2px solid #dc3545; }
-.alert-box.network { border: 2px solid #dc3545; }
-.alert-box.update { border: 2px solid #3085d6; }
-.alert-box.attention { border: 2px solid #e83e8c; }
-.alert-box.permission { border: 2px solid #dc3545; }
-.alert-box.retry { border: 2px solid #fd7e14; }
-.alert-box.submitted { border: 2px solid #28a745; }
-.alert-box.question { border: 2px solid #6c757d; }
-.alert-box.processing { border: 2px solid #6f42c1; }
-.alert-box.cancelled { border: 2px solid #6c757d; }
-.alert-box.blocked { border: 2px solid #dc3545; }
-.alert-box.notification { border: 2px solid #17a2b8; }
+.alert-box .alert-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.alert-box .timer-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: #3085d6;
+  transition: width 0.01s linear;
+}
+.alert-box input,
+.alert-box textarea {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.alert-box .loader {
+  border: 2px solid #fff;
+  border-top: 2px solid #3085d6;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+.alert-box[dir="rtl"] {
+  text-align: right;
+}
+.alert-box.normal {
+  border: 2px solid #6c757d;
+}
+.alert-box.success {
+  border: 2px solid #28a745;
+}
+.alert-box.error {
+  border: 2px solid #dc3545;
+}
+.alert-box.warning {
+  border: 2px solid #ffc107;
+}
+.alert-box.info {
+  border: 2px solid #17a2b8;
+}
+.alert-box.confirm {
+  border: 2px solid #3085d6;
+}
+.alert-box.delete {
+  border: 2px solid #c82333;
+}
+.alert-box.confirmDelete {
+  border: 2px solid #c82333;
+}
+.alert-box.save {
+  border: 2px solid #28a745;
+}
+.alert-box.load {
+  border: 2px solid #6f42c1;
+}
+.alert-box.upload {
+  border: 2px solid #17a2b8;
+}
+.alert-box.download {
+  border: 2px solid #28a745;
+}
+.alert-box.timeout {
+  border: 2px solid #fd7e14;
+}
+.alert-box.login {
+  border: 2px solid #28a745;
+}
+.alert-box.logout {
+  border: 2px solid #6c757d;
+}
+.alert-box.limit {
+  border: 2px solid #dc3545;
+}
+.alert-box.network {
+  border: 2px solid #dc3545;
+}
+.alert-box.update {
+  border: 2px solid #3085d6;
+}
+.alert-box.attention {
+  border: 2px solid #e83e8c;
+}
+.alert-box.permission {
+  border: 2px solid #dc3545;
+}
+.alert-box.retry {
+  border: 2px solid #fd7e14;
+}
+.alert-box.submitted {
+  border: 2px solid #28a745;
+}
+.alert-box.question {
+  border: 2px solid #6c757d;
+}
+.alert-box.processing {
+  border: 2px solid #6f42c1;
+}
+.alert-box.cancelled {
+  border: 2px solid #6c757d;
+}
+.alert-box.blocked {
+  border: 2px solid #dc3545;
+}
+.alert-box.notification {
+  border: 2px solid #17a2b8;
+}
+.alert-box.basic {
+  border: 2px solid #6c757d;
+}
+.alert-box.titleText {
+  border: 2px solid #6c757d;
+}
+.alert-box.errorFooter {
+  border: 2px solid #dc3545;
+}
+.alert-box.longContent {
+  border: 2px solid #6c757d;
+}
+.alert-box.draggable {
+  border: 2px solid #28a745;
+}
+.alert-box.customHtml {
+  border: 2px solid #17a2b8;
+}
+.alert-box.threeButtons {
+  border: 2px solid #3085d6;
+}
+.alert-box.topEnd {
+  border: 2px solid #28a745;
+}
+.alert-box.customAnim {
+  border: 2px solid #6c757d;
+}
+.alert-box.confirmDeleteFn {
+  border: 2px solid #ffc107;
+}
+.alert-box.bootstrap {
+  border: 2px solid #3085d6;
+}
+.alert-box.customImage {
+  border: 2px solid #6c757d;
+}
+.alert-box.customStyle {
+  border: 2px solid #716add;
+}
+.alert-box.timer {
+  border: 2px solid #6c757d;
+}
+.alert-box.rtl {
+  border: 2px solid #3085d6;
+}
+.alert-box.ajax {
+  border: 2px solid #3085d6;
+}
 @keyframes iconPop {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 @keyframes slideOut {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(100%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @media (max-width: 600px) {
   .alert-box {
