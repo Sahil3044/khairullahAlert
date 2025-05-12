@@ -1,4 +1,6 @@
-theae are the public CDN link for the given alert system 
+These are the public CDN links for the given alert system 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/css/alert.css">
-<script src="https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/js/alert.js"></script>
+alert.js: https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/js/alert.js
+alert.css: https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/css/alert.css
+translations.json: https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/translations.json
+index.html: https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@latest/index.html
