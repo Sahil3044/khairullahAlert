@@ -240,7 +240,7 @@ const khairullah = (function () {
     });
   }
 
-  async function loadTranslations() {
+  async function loadTranslations() { 
     try {
       const response = await fetch("https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@main/js/alert.js");
       if (!response.ok) throw new Error("Failed to load translations");
