@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert System Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-username/alert-system@latest/css/alert.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 20px; text-align: center; background: #f0f2f5; }
+    select, button { padding: 8px; margin: 5px; font-size: 14px; border-radius: 6px; cursor: pointer; }
+    .alert-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    button { background: #3085d6; color: #fff; border: none; }
+    button:hover { background: #286bb5; }
+  </style>
+</head>
+<body>
+  <h2>Alert System Demo</h2>
+  <select onchange="Alert.setLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="ps">Pashto</option>
+    <option value="fa">Dari</option>
+  </select>
+  <div class="alert-buttons">
+    <button onclick="Alert.fire({type: 'success'})">Success</button>
+    <button onclick="Alert.fire({type: 'error'})">Error</button>
+    <button onclick="Alert.fire({type: 'warning'})">Warning</button>
+    <button onclick="Alert.fire({type: 'info'})">Info</button>
+    <button onclick="Alert.fire({type: 'confirm'})">Confirm</button>
+    <button onclick="Alert.fire({type: 'delete'})">Delete</button>
+    <button onclick="Alert.fire({type: 'save'})">Save</button>
+    <button onclick="Alert.fire({type: 'load'})">Load</button>
+    <button onclick="Alert.fire({type: 'upload'})">Upload</button>
+    <button onclick="Alert.fire({type: 'download'})">Download</button>
+    <button onclick="Alert.fire({type: 'timeout'})">Timeout</button>
+    <button onclick="Alert.fire({type: 'login'})">Login</button>
+    <button onclick="Alert.fire({type: 'logout'})">Logout</button>
+    <button onclick="Alert.fire({type: 'limit'})">Limit</button>
+    <button onclick="Alert.fire({type: 'network'})">Network</button>
+    <button onclick="Alert.fire({type: 'update'})">Update</button>
+    <button onclick="Alert.fire({type: 'attention'})">Attention</button>
+    <button onclick="Alert.fire({type: 'permission'})">Permission</button>
+    <button onclick="Alert.fire({type: 'retry'})">Retry</button>
+    <button onclick="Alert.fire({type: 'submitted'})">Submitted</button>
+    <button onclick="Alert.fire({type: 'question'})">Question</button>
+    <button onclick="Alert.fire({type: 'processing'})">Processing</button>
+    <button onclick="Alert.fire({type: 'cancelled'})">Cancelled</button>
+    <button onclick="Alert.fire({type: 'blocked'})">Blocked</button>
+    <button onclick="Alert.fire({type: 'notification'})">Notification</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/your-username/alert-system@latest/js/alert.js"></script>
+</body>
+</html>
