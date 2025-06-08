@@ -1,5 +1,4 @@
-check this javascript just uipdate the langauge section that it must check the system langauge which language us used dynamically and it must check stored langauge or it must check other type of langauge usage and adjust itslf to that langauge const khairullah = (function () {
-  let currentLang = document.documentElement.lang || "en";
+   let currentLang = document.documentElement.lang || "en";
   let translations = null;
   let currentAlertType = null;
 
