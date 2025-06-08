@@ -2,6 +2,7 @@ const khairullah = (function () {
   let currentLang = getPreferredLanguage();
   let translations = null;
   let currentAlertType = null;
+  let languageChangeCallbacks = [];
 
   const alertConfig = {
     normal: { timeout: 3000, color: "#6c757d", icon: "" },
@@ -118,7 +119,7 @@ const khairullah = (function () {
     processing: {
       timeout: 3000,
       color: "#6f42c1",
-      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="2"><path d="M12 2v4m0 12v4m-6-14l2402.5 2.5M18 6l-2.5 2.5M6 18l2.5-2.5m7.5-2.5L18 15"/></svg>`,
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="2"><path d="M12 2v4m0 12v4m-6-14l2.5 2.5M18 6l-2.5 2.5M6 18l2.5-2.5m7.5-2.5L18 15"/></svg>`,
     },
     cancelled: {
       timeout: 3000,
@@ -202,7 +203,7 @@ const khairullah = (function () {
 
     // Check browser language
     const browserLang = navigator.language || navigator.userLanguage;
-    const simplifiedLang = browserLang.split('-')[0]; // Get base language (e.g., 'en' from 'en-US')
+    const simplifiedLang = browserLang.split('-')[0];
     if (['en', 'ps', 'fa'].includes(simplifiedLang)) {
       return simplifiedLang;
     }
@@ -314,13 +315,23 @@ const khairullah = (function () {
     }
   }
 
+  function onLanguageChange(callback) {
+    if (typeof callback === 'function') {
+      languageChangeCallbacks.push(callback);
+    }
+  }
+
   function setLanguage(lang) {
     if (translations && translations.buttons[lang]) {
       currentLang = lang;
-      localStorage.setItem('preferredLanguage', lang); // Store language preference
+      localStorage.setItem('preferredLanguage', lang);
       document.documentElement.lang = lang;
-      document.documentElement.dir =
-        lang === "fa" || lang === "ps" ? "rtl" : "ltr";
+      document.documentElement.dir = lang === "fa" || lang === "ps" ? "rtl" : "ltr";
+      
+      // Trigger callbacks for language change
+      languageChangeCallbacks.forEach(callback => callback(lang));
+      
+      // Re-fire current alert if visible
       if (
         currentAlertType &&
         document.getElementById("alertBox").style.display === "block"
@@ -331,6 +342,7 @@ const khairullah = (function () {
       currentLang = "en";
       localStorage.setItem('preferredLanguage', 'en');
       document.documentElement.dir = "ltr";
+      languageChangeCallbacks.forEach(callback => callback('en'));
     }
   }
 
@@ -633,7 +645,7 @@ const khairullah = (function () {
   initDOM();
   loadTranslations();
 
-  return { fire, setLanguage };
+  return { fire, setLanguage, onLanguageChange };
 })();
 
 document.addEventListener("keydown", (e) => {
