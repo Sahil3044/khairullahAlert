@@ -1,5 +1,5 @@
 const khairullah = (function () {
-  let currentLang = document.documentElement.lang || "en";
+  let currentLang = getPreferredLanguage();
   let translations = null;
   let currentAlertType = null;
 
@@ -118,7 +118,7 @@ const khairullah = (function () {
     processing: {
       timeout: 3000,
       color: "#6f42c1",
-      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="2"><path d="M12 2v4m0 12v4m-6-14l2.5 2.5M18 6l-2.5 2.5M6 18l2.5-2.5m7.5-2.5L18 15"/></svg>`,
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="#6f42c1" stroke-width="2"><path d="M12 2v4m0 12v4m-6-14l2402.5 2.5M18 6l-2.5 2.5M6 18l2.5-2.5m7.5-2.5L18 15"/></svg>`,
     },
     cancelled: {
       timeout: 3000,
@@ -192,6 +192,30 @@ const khairullah = (function () {
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="#3085d6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16h0m0-4v4m0-8h0"/></svg>`,
     },
   };
+
+  function getPreferredLanguage() {
+    // Check for stored language preference in localStorage
+    const storedLang = localStorage.getItem('preferredLanguage');
+    if (storedLang && ['en', 'ps', 'fa'].includes(storedLang)) {
+      return storedLang;
+    }
+
+    // Check browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    const simplifiedLang = browserLang.split('-')[0]; // Get base language (e.g., 'en' from 'en-US')
+    if (['en', 'ps', 'fa'].includes(simplifiedLang)) {
+      return simplifiedLang;
+    }
+
+    // Check document language as fallback
+    const docLang = document.documentElement.lang;
+    if (['en', 'ps', 'fa'].includes(docLang)) {
+      return docLang;
+    }
+
+    // Default to English
+    return 'en';
+  }
 
   function initDOM() {
     const backdrop = document.createElement("div");
@@ -286,13 +310,14 @@ const khairullah = (function () {
           },
         },
       };
-      setLanguage("en");
+      setLanguage(currentLang);
     }
   }
 
   function setLanguage(lang) {
     if (translations && translations.buttons[lang]) {
       currentLang = lang;
+      localStorage.setItem('preferredLanguage', lang); // Store language preference
       document.documentElement.lang = lang;
       document.documentElement.dir =
         lang === "fa" || lang === "ps" ? "rtl" : "ltr";
@@ -304,6 +329,7 @@ const khairullah = (function () {
       }
     } else {
       currentLang = "en";
+      localStorage.setItem('preferredLanguage', 'en');
       document.documentElement.dir = "ltr";
     }
   }
@@ -383,7 +409,7 @@ const khairullah = (function () {
       box.style.padding = padding;
       box.style.background = background;
       box.style.color = color || "#222";
-      backdrop.style.background = backdrop;
+      backdrop.style.background = backdropColor;
       if (draggable) {
         box.style.position = "absolute";
         currentX = window.innerWidth / 2 - width / 2;
@@ -621,4 +647,3 @@ document.addEventListener("keydown", (e) => {
       ?.click();
   }
 });
- 
