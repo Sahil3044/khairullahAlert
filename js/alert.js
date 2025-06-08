@@ -1,8 +1,7 @@
-const khairullah = (function () {
-  let currentLang = getPreferredLanguage();
+check this javascript just uipdate the langauge section that it must check the system langauge which language us used dynamically and it must check stored langauge or it must check other type of langauge usage and adjust itslf to that langauge const khairullah = (function () {
+  let currentLang = document.documentElement.lang || "en";
   let translations = null;
   let currentAlertType = null;
-  let languageChangeCallbacks = [];
 
   const alertConfig = {
     normal: { timeout: 3000, color: "#6c757d", icon: "" },
@@ -194,30 +193,6 @@ const khairullah = (function () {
     },
   };
 
-  function getPreferredLanguage() {
-    // Check for stored language preference in localStorage
-    const storedLang = localStorage.getItem('preferredLanguage');
-    if (storedLang && ['en', 'ps', 'fa'].includes(storedLang)) {
-      return storedLang;
-    }
-
-    // Check browser language
-    const browserLang = navigator.language || navigator.userLanguage;
-    const simplifiedLang = browserLang.split('-')[0];
-    if (['en', 'ps', 'fa'].includes(simplifiedLang)) {
-      return simplifiedLang;
-    }
-
-    // Check document language as fallback
-    const docLang = document.documentElement.lang;
-    if (['en', 'ps', 'fa'].includes(docLang)) {
-      return docLang;
-    }
-
-    // Default to English
-    return 'en';
-  }
-
   function initDOM() {
     const backdrop = document.createElement("div");
     backdrop.className = "alert-backdrop";
@@ -311,27 +286,16 @@ const khairullah = (function () {
           },
         },
       };
-      setLanguage(currentLang);
-    }
-  }
-
-  function onLanguageChange(callback) {
-    if (typeof callback === 'function') {
-      languageChangeCallbacks.push(callback);
+      setLanguage("en");
     }
   }
 
   function setLanguage(lang) {
     if (translations && translations.buttons[lang]) {
       currentLang = lang;
-      localStorage.setItem('preferredLanguage', lang);
       document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "fa" || lang === "ps" ? "rtl" : "ltr";
-      
-      // Trigger callbacks for language change
-      languageChangeCallbacks.forEach(callback => callback(lang));
-      
-      // Re-fire current alert if visible
+      document.documentElement.dir =
+        lang === "fa" || lang === "ps" ? "rtl" : "ltr";
       if (
         currentAlertType &&
         document.getElementById("alertBox").style.display === "block"
@@ -340,9 +304,7 @@ const khairullah = (function () {
       }
     } else {
       currentLang = "en";
-      localStorage.setItem('preferredLanguage', 'en');
       document.documentElement.dir = "ltr";
-      languageChangeCallbacks.forEach(callback => callback('en'));
     }
   }
 
@@ -421,7 +383,7 @@ const khairullah = (function () {
       box.style.padding = padding;
       box.style.background = background;
       box.style.color = color || "#222";
-      backdrop.style.background = backdropColor;
+      backdrop.style.background = backdrop;
       if (draggable) {
         box.style.position = "absolute";
         currentX = window.innerWidth / 2 - width / 2;
@@ -645,7 +607,7 @@ const khairullah = (function () {
   initDOM();
   loadTranslations();
 
-  return { fire, setLanguage, onLanguageChange };
+  return { fire, setLanguage };
 })();
 
 document.addEventListener("keydown", (e) => {
@@ -659,3 +621,4 @@ document.addEventListener("keydown", (e) => {
       ?.click();
   }
 });
+ 
