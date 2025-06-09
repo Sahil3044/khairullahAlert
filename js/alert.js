@@ -254,32 +254,24 @@ const khairullah = (function () {
   };
 
   function getPreferredLanguage() {
-    // Check global config (window.khairullahConfig.lang)
+    const supportedLangs = ["en", "ps", "fa"];
     const configLang = window.khairullahConfig?.lang;
-    if (configLang && ["en", "ps", "fa"].includes(configLang)) {
+    if (configLang && supportedLangs.includes(configLang)) {
       return configLang;
     }
-
-    // Check stored language preference in localStorage
     const storedLang = localStorage.getItem("preferredLanguage");
-    if (storedLang && ["en", "ps", "fa"].includes(storedLang)) {
+    if (storedLang && supportedLangs.includes(storedLang)) {
       return storedLang;
     }
-
-    // Check document language
     const docLang = document.documentElement.lang;
-    if (docLang && ["en", "ps", "fa"].includes(docLang)) {
+    if (docLang && supportedLangs.includes(docLang)) {
       return docLang;
     }
-
-    // Check browser language
     const browserLang = navigator.language || navigator.userLanguage;
     const simplifiedLang = browserLang ? browserLang.split("-")[0] : null;
-    if (simplifiedLang && ["en", "ps", "fa"].includes(simplifiedLang)) {
+    if (simplifiedLang && supportedLangs.includes(simplifiedLang)) {
       return simplifiedLang;
     }
-
-    // Default to English
     return "en";
   }
 
@@ -304,489 +296,38 @@ const khairullah = (function () {
       <div id="alertFooter"></div>
     `;
     document.body.appendChild(alertBox);
-
-    // Draggable functionality
-    let isDragging = false;
-    let currentX, currentY, initialX, initialY;
-    alertBox.addEventListener("mousedown", (e) => {
-      if (e.target === alertBox || e.target.id === "alertTitle") {
-        isDragging = true;
-        initialX = e.clientX - currentX;
-        initialY = e.clientY - currentY;
-      }
-    });
-    document.addEventListener("mousemove", (e) => {
-      if (isDragging) {
-        e.preventDefault();
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
-        alertBox.style.left = currentX + "px";
-        alertBox.style.top = currentY + "px";
-        alertBox.style.transform = "none";
-      }
-    });
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
   }
 
-  async function loadTranslations() {
-    try {
-      const response = await fetch(
-        "https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@main/translations.json"
-      );
-      if (!response.ok) throw new Error("Failed to load translations");
-      translations = await response.json();
-      setLanguage(currentLang);
-    } catch (error) {
-      console.error("Alert: Failed to load translations.", error);
-      translations = {
-        alerts: {
-          normal: {
-            en: { title: "Alert", text: "You are information updated!" },
-            ps: { title: "خبرتیا", text: "ستاسو معلومات آپډیټ یعنی تازه شول!" },
-            fa: { title: "هشدار", text: "معلومات سما آپډیټ ګردید!" },
-          },
-          success: {
-            en: { title: "Good job!", text: "action succsed!" },
-            ps: { title: "ښه کار!", text: "کار په بریالیتوب سره وشوو!" },
-            fa: { title: "آفرین!", text: "کار انجام شد!" },
-          },
-          error: {
-            en: { title: "Oops...", text: "Something went wrong!" },
-            ps: { title: "اوپس...", text: "یو څه غلط شول!" },
-            fa: { title: "اوه...", text: "مشکلی پیش آمد!" },
-          },
-          warning: {
-            en: { title: "Warning", text: "Check your input." },
-            ps: { title: "خبرتیا", text: "خپل ننوتنه(انپوټ) وګورئ." },
-            fa: { title: "هشدار", text: "ورودی خود را بررسی کنید." },
-          },
-          info: {
-            en: { title: "Info", text: "Here is some info." },
-            ps: { title: "معلومات", text: "دلته ځینې معلومات شته." },
-            fa: { title: "اطلاعات", text: "اینجا اطلاعاتی است." },
-          },
-          confirm: {
-            en: {
-              title: "Do you want to save the changes?",
-              text: "Changes will be saved permanently.",
-            },
-            ps: {
-              title: "ایا تاسو غواړئ تغیرات ثبت کړئ؟",
-              text: "تغیرات به د همیشه لپاره ذخیره شې.",
-            },
-            fa: {
-              title: "آیا می‌خواهید تغییرات را ذخیره کنید؟",
-              text: "تغییرات به طور دائم ذخیره خواهند شد.",
-            },
-          },
-          delete: {
-            en: {
-              title: "Are you sure?",
-              text: "You won't be able to revert this!",
-            },
-            ps: {
-              title: "ایا تاسو یقیني یاست؟",
-              text: "تاسو به دا بیرته تر لاسه نکړې!",
-            },
-            fa: {
-              title: "آیا مطمئن هستید؟",
-              text: "شما نمی‌توانید این را بازگردانید!",
-            },
-          },
-          confirmDelete: {
-            en: { title: "Confirm Delete", text: "Really delete this item?" },
-            ps: { title: "د حذف تاییدول", text: "آیا واقعاً دا حذف کړم؟" },
-            fa: { title: "تأیید حذف", text: "واقعاً این مورد را حذف کنید؟" },
-          },
-          save: {
-            en: { title: "Saved", text: "Data saved successfully." },
-            ps: { title: "ثبت شو", text: "معلومات په بریالیتوب سره ثبت شول." },
-            fa: { title: "ذخیره شد", text: "داده‌ها با موفقیت ذخیره شدند." },
-          },
-          load: {
-            en: { title: "Loading", text: "Please wait..." },
-            ps: { title: "پورته کول", text: "مهرباني وکړئ لږ انتظار وکړئ..." },
-            fa: { title: "بارگذاری", text: "لطفاً صبر کنید..." },
-          },
-          upload: {
-            en: { title: "Uploading", text: "File uploading..." },
-            ps: { title: "پورته کول", text: "فایل پورته(آپلوډ) کیږي..." },
-            fa: { title: "بارگذاری", text: "فایل در حال بارگذاری..." },
-          },
-          download: {
-            en: { title: "Downloading", text: "File downloading..." },
-            ps: { title: "کښته کول", text: "فایل ډاونلوډ کیږي..." },
-            fa: { title: "دانلود", text: "فایل در حال دانلود..." },
-          },
-          timeout: {
-            en: { title: "Timeout", text: "Session expired." },
-            ps: { title: "مهلت ختم شو", text: "ناسته ختمه شوه." },
-            fa: { title: "انقضا", text: "جلسه منقضی شد." },
-          },
-          login: {
-            en: { title: "Login", text: "Logged in successfully." },
-            ps: {
-              title: "(لاګین)ننوتل",
-              text: "په بریالیتوب سره لاګین شواې یعنی ننوتې.",
-            },
-            fa: { title: "ورود", text: "با موفقیت وارد شدید." },
-          },
-          logout: {
-            en: { title: "Logout", text: "Logged out successfully." },
-            ps: { title: "وتل", text: "په بریالیتوب سره ووتي" },
-            fa: { title: "خروج", text: "با موفقیت خارج شدید." },
-          },
-          limit: {
-            en: { title: "Limit", text: "Limit reached." },
-            ps: {
-              title: "محدودیت",
-              text: "تاسو خپل ټاکل شوې حد ته رسیدلي یاست.",
-            },
-            fa: { title: "محدودیت", text: "به حد رسیدید." },
-          },
-          network: {
-            en: { title: "Network Error", text: "No connection." },
-            ps: { title: "د شبکي تېروتنه", text: "انټرنټ نشته." },
-            fa: { title: "خطای شبکه", text: "اتصال وجود ندارد." },
-          },
-          update: {
-            en: { title: "Update", text: "Update completed." },
-            ps: { title: "آپډیټ", text: "آپډیټ کول په کامیابی سره تسره شوول." },
-            fa: { title: "بروزرسانی", text: "بروزرسانی انجام شد." },
-          },
-          attention: {
-            en: { title: "Attention", text: "Pay attention to this message." },
-            ps: { title: "پاملرنه", text: "دې پیغام ته پام وکړئ." },
-            fa: { title: "توجه", text: "به این پیام توجه کنید." },
-          },
-          permission: {
-            en: { title: "Permission", text: "Access denied." },
-            ps: { title: "اجازه رد شوه", text: "لاسرسی رد شوی دی." },
-            fa: { title: "عدم دسترسی", text: "دسترسی رد شد." },
-          },
-          retry: {
-            en: { title: "Retry", text: "Please try again." },
-            ps: { title: "بیا هڅه", text: "مهرباني وکړئ بیا هڅه وکړئ." },
-            fa: { title: "تلاش مجدد", text: "لطفاً دوباره تلاش کنید." },
-          },
-          submitted: {
-            en: { title: "Submitted", text: "Form submitted successfully." },
-            ps: { title: "ذخیره", text: "فورمه په بریالیتوب سره ذخیره شو." },
-            fa: { title: "ارسال شد", text: "فرم با موفقیت ارسال شد." },
-          },
-          question: {
-            en: { title: "The Internet?", text: "That thing is still around?" },
-            ps: { title: "انټرنیټ؟", text: "دا شی اوس هم شته؟" },
-            fa: { title: "اینترنت؟", text: "آن چیز هنوز وجود دارد؟" },
-          },
-          processing: {
-            en: { title: "Processing", text: "Processing request..." },
-            ps: { title: "پروسس کول", text: "ستاسو غوښتنه پروسس کیږي..." },
-            fa: { title: "در حال پردازش", text: "در حال پردازش درخواست..." },
-          },
-          cancelled: {
-            en: { title: "Cancelled", text: "Action cancelled." },
-            ps: { title: "لغوه شوه", text: "عمل لغوه شو." },
-            fa: { title: "لغو شد", text: "عملیات لغو شد." },
-          },
-          blocked: {
-            en: { title: "Blocked", text: "Action blocked." },
-            ps: { title: "بند شوی", text: "دلته کار مه لره." },
-            fa: { title: "مسدود شد", text: "عملیات مسدود شد." },
-          },
-          notification: {
-            en: {
-              title: "Your work has been saved",
-              text: "All changes are saved.",
-            },
-            ps: { title: "ستاسو کار ثبت شو", text: "ټول تغیرات ثبت شول." },
-            fa: {
-              title: "کار شما ذخیره شده است",
-              text: "همه تغییرات ذخیره شده‌اند.",
-            },
-          },
-          basic: {
-            en: {
-              title: "khairullahAlert is working!",
-              text: "Basic alert example.",
-            },
-            ps: { title: "خیرالله!", text: "یوه ساده خبرتیا." },
-            fa: {
-              title: "هشدار خیرالله کار می‌کند!",
-              text: "مثال هشدار پایه.",
-            },
-          },
-          titleText: {
-            en: { title: "The Internet?", text: "That thing is still around?" },
-            ps: { title: "انټرنیټ؟", text: "دا شی اوس هم شته؟" },
-            fa: { title: "اینترنت؟", text: "آن چیز هنوز وجود دارد؟" },
-          },
-          errorFooter: {
-            en: { title: "Oops...", text: "Something went wrong!" },
-            ps: { title: "اووفف...", text: "یو څه غلط وشول!" },
-            fa: { title: "اوه...", text: "مشکلی پیش آمد!" },
-          },
-          longContent: {
-            en: {
-              title: "Long Content",
-              text: "This is a long content alert.",
-            },
-            ps: {
-              title: "اوږد منځپانګه",
-              text: "دا د یوي اوږدې منځپانګي خبرتیا ده.",
-            },
-            fa: {
-              title: "محتوای طولانی",
-              text: "این یک هشدار با محتوای طولانی است.",
-            },
-          },
-          draggable: {
-            en: { title: "Drag me!", text: "You can drag this alert." },
-            ps: {
-              title: "ما راکش کړه!",
-              text: "تاسو کولی شئ دا خبرتیا راکش کړي",
-            },
-            fa: {
-              title: "من را بکشید!",
-              text: "شما می‌توانید این هشدار را بکشید.",
-            },
-          },
-          customHtml: {
-            en: { title: "HTML Example", text: "Custom HTML content." },
-            ps: { title: "د HTML بېلګه", text: "خوښه HTML منځپانګه." },
-            fa: { title: "مثال HTML", text: "محتوای HTML سفارشی." },
-          },
-          threeButtons: {
-            en: {
-              title: "Do you want to save the changes?",
-              text: "Choose an option.",
-            },
-            ps: {
-              title: "ایا تاسو غواړئ تغیرات ثبت کړئ؟",
-              text: "یو انتخاب وټاکي.",
-            },
-            fa: {
-              title: "آیا می‌خواهید تغییرات را ذخیره کنید؟",
-              text: "یک گزینه انتخاب کنید.",
-            },
-          },
-          topEnd: {
-            en: { title: "Your work has been saved", text: "Changes saved." },
-            ps: { title: "ستاسو کار ثبت شو", text: "بدلونونه ثبت شول." },
-            fa: { title: "کار شما ذخیره شد", text: "تغییرات ذخیره شدند." },
-          },
-          customAnim: {
-            en: { title: "Custom Animation", text: "With bounce effect." },
-            ps: { title: "د خوښې انیمیشن", text: "د باؤنس اثر سره." },
-            fa: { title: "انیمیشن سفارشی", text: "با اثر پرش." },
-          },
-          confirmDeleteFn: {
-            en: {
-              title: "Are you sure?",
-              text: "You won't be able to revert this!",
-            },
-            ps: {
-              title: "ایا ستاسو خوښه ده؟",
-              text: "کچیرته حذف شې تاسو بیا یی بیا پیدا نکړې!",
-            },
-            fa: {
-              title: "آیا مطمئن هستید؟",
-              text: "شما نمی‌توانید این را بازگردانید!",
-            },
-          },
-          bootstrap: {
-            en: {
-              title: "Are you sure?",
-              text: "You won't be able to revert this!",
-            },
-            ps: {
-              title: "ایا ستاسو خوښه ده؟",
-              text: "کچیرته حذف شې تاسو بیا یی بیا پیدا نکړې!",
-            },
-            fa: {
-              title: "آیا مطمئن هستید؟",
-              text: "شما نمی‌توانید این را بازگردانید!",
-            },
-          },
-          customImage: {
-            en: { title: "Sweet!", text: "Modal with a custom image." },
-            ps: { title: "خوږ!", text: "د خوښې انځور سره موډل." },
-            fa: { title: "شیرین!", text: "مدال با تصویر سفارشی." },
-          },
-          customStyle: {
-            en: {
-              title: "Custom Style",
-              text: "Custom width, padding, color, background.",
-            },
-            ps: {
-              title: "د خوښې سټایل",
-              text: "د خوښې سټایل پلنوالی، پیډینګ، رنګ، شالید.",
-            },
-            fa: {
-              title: "استایل سفارشی",
-              text: "عرض، padding، رنگ و پس‌زمینه سفارشی.",
-            },
-          },
-          timer: {
-            en: { title: "Auto Close Alert", text: "Closes automatically." },
-            ps: { title: "خبرتیا", text: "دا کوچني په پاڼه خپل تړل کیږې." },
-            fa: {
-              title: "هشدار بسته شدن خودکار",
-              text: "به طور خودکار بسته می‌شود.",
-            },
-          },
-          rtl: {
-            en: {
-              title: "Would you like to continue?",
-              text: "Right-to-left support.",
-            },
-            ps: {
-              title: "ایا تاسو غواړئ ادامه ورکړئ؟",
-              text: "ښي نه کیڼ ملاتړ.",
-            },
-            fa: {
-              title: "آیا می‌خواهید ادامه دهید؟",
-              text: "پشتیبانی از راست به چپ.",
-            },
-          },
-          ajax: {
-            en: {
-              title: "Submit your Github username",
-              text: "Enter a valid username.",
-            },
-            ps: {
-              title: "خپل د ګیټ‌هب کارن نوم داخل کړې",
-              text: "یو معتبر کارن(یوزر) نوم داخل کړې.",
-            },
-            fa: {
-              title: "نام کاربری گیت‌هاب خود را وارد کنید",
-              text: "یک نام کاربری معتبر وارد کنید.",
-            },
-          },
-          confirmSuccess: {
-            en: { title: "Saved!", text: "Changes saved." },
-            ps: { title: "ثبت شو!", text: "بدلونونه ثبت شول." },
-            fa: { title: "ذخیره شد!", text: "تغییرات ذخیره شدند." },
-          },
-          confirmInfo: {
-            en: { title: "Changes not saved", text: "You chose not to save." },
-            ps: {
-              title: "بدلونونه ثبت نه شول",
-              text: "تاسو وویل چې ثبت یې نه کړئ.",
-            },
-            fa: {
-              title: "تغییرات ذخیره نشدند",
-              text: "شما انتخاب کردید که ذخیره نکنید.",
-            },
-          },
-          confirmCancelled: {
-            en: { title: "Cancelled", text: "Action cancelled." },
-            ps: { title: "لغوه شول", text: "عمل لغوه شو." },
-            fa: { title: "لغو شد", text: "عملیات لغو شد." },
-          },
-          deleteSuccess: {
-            en: { title: "Deleted!", text: "Item deleted." },
-            ps: { title: "حذف شو!", text: "توکی حذف شو." },
-            fa: { title: "حذف شد!", text: "مورد حذف شد." },
-          },
-          deleteCancelled: {
-            en: { title: "Cancelled", text: "Deletion cancelled." },
-            ps: { title: "لغوه شول", text: "حذف کول لغوه شول." },
-            fa: { title: "لغو شد", text: "حذف لغو شد." },
-          },
-          confirmDeleteSuccess: {
-            en: { title: "Deleted!", text: "Item deleted." },
-            ps: { title: "حذف شو!", text: "توکی حذف شو." },
-            fa: { title: "حذف شد!", text: "مورد حذف شد." },
-          },
-          confirmDeleteInfo: {
-            en: { title: "Denied", text: "Deletion denied." },
-            ps: { title: "رد شو", text: "حذف کول رد شول." },
-            fa: { title: "رد شد", text: "حذف رد شد." },
-          },
-          threeButtonsSuccess: {
-            en: { title: "Saved!", text: "Changes saved." },
-            ps: { title: "ثبت شو!", text: "بدلونونه ثبت شول." },
-            fa: { title: "ذخیره شد!", text: "تغییرات ذخیره شدند." },
-          },
-          threeButtonsInfo: {
-            en: { title: "Changes not saved", text: "You chose not to save." },
-            ps: {
-              title: "بدلونونه ثبت نه شول",
-              text: "تاسو وویل چې ثبت یې نه کړې.",
-            },
-            fa: {
-              title: "تغییرات ذخیره نشدند",
-              text: "شما انتخاب کردید که ذخیره نکنید.",
-            },
-          },
-          confirmDeleteFnSuccess: {
-            en: { title: "Deleted!", text: "Your file has been deleted." },
-            ps: { title: "حذف شو!", text: "ستاسو فایل حذف شوی ده." },
-            fa: { title: "حذف شد!", text: "فایل شما حذف شده است." },
-          },
-          ajaxSuccess: {
-            en: { title: "Success!", text: "Github user found." },
-            ps: { title: "بریالیتوب!", text: "د ګیټ‌هب کارن(یوزر) وموندل شو." },
-            fa: { title: "موفقیت!", text: "کاربر گیت‌هاب پیدا شد." },
-          },
-          ajaxError: {
-            en: { title: "Error!", text: "User not found." },
-            ps: { title: "تېروتنه!", text: "کارن(یوزر) ونه موندل شو." },
-            fa: { title: "خطا!", text: "کاربر پیدا نشد." },
-          },
-        },
-        buttons: {
-          en: {
-            ok: "OK",
-            confirm: "Confirm",
-            cancel: "Cancel",
-            deny: "Deny",
-            save: "Save",
-            dontSave: "Don't save",
-            yesDelete: "Yes, delete it!",
-            noCancel: "No, cancel!",
-            lookup: "Look up",
-          },
-          ps: {
-            ok: "سمه ده",
-            confirm: "تایید",
-            cancel: "لغوه",
-            deny: "رد یې کړې",
-            save: "ثبت یې کړې",
-            dontSave: "مه یې ثبتوئ",
-            yesDelete: "هو، حذف یې کړئ!",
-            noCancel: "نه، لغوه کړئ!",
-            lookup: "پلټنه",
-          },
-          fa: {
-            ok: "تأیید",
-            confirm: "تأیید",
-            cancel: "لغو",
-            deny: "رد",
-            save: "ذخیره",
-            dontSave: "ذخیره نکن",
-            yesDelete: "بله، حذفش کن!",
-            noCancel: "خیر، لغو کن!",
-            lookup: "جستجو",
-          },
-        },
-      };
-      setLanguage(currentLang);
-    }
+  function loadTranslations() {
+    fetch(
+      "https://cdn.jsdelivr.net/gh/Sahil3044/khairullahAlert@main/translations.json"
+    )
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to load translations");
+        return response.json();
+      })
+      .then((data) => {
+        translations = data;
+        setLanguage(currentLang);
+      })
+      .catch((error) => {
+        console.warn("khairullahAlert: Failed to load translations.", error);
+        setLanguage(currentLang);
+      });
   }
 
   function setLanguage(lang) {
-    if (translations && translations.buttons[lang]) {
+    const supportedLangs = ["en", "ps", "fa"];
+    if (
+      translations &&
+      translations.buttons[lang] &&
+      supportedLangs.includes(lang)
+    ) {
       currentLang = lang;
       localStorage.setItem("preferredLanguage", lang);
-      document.documentElement.lang = lang;
+      document.documentElement.setAttribute("lang", lang);
       document.documentElement.dir =
         lang === "fa" || lang === "ps" ? "rtl" : "ltr";
-
-      // Re-fire current alert if visible
       if (
         currentAlertType &&
         document.getElementById("alertBox").style.display === "block"
@@ -796,28 +337,44 @@ const khairullah = (function () {
     } else {
       currentLang = "en";
       localStorage.setItem("preferredLanguage", "en");
+      document.documentElement.setAttribute("lang", "en");
       document.documentElement.dir = "ltr";
+      if (
+        currentAlertType &&
+        document.getElementById("alertBox").style.display === "block"
+      ) {
+        fire({ type: "error" });
+      }
     }
   }
 
-  // Observe changes to document.lang
   function observeLanguageChanges() {
-    const observer = new MutationObserver(() => {
-      const newLang = getPreferredLanguage();
-      if (newLang !== currentLang) {
-        setLanguage(newLang);
-      }
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "lang") {
+          const newLang = document.documentElement.lang;
+          if (newLang !== currentLang) {
+            setLanguage(newLang);
+          }
+        }
+      });
     });
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["lang"],
     });
+
+    setInterval(() => {
+      const newLang = document.documentElement.lang;
+      if (newLang !== currentLang && ["en", "ps", "fa"].includes(newLang)) {
+        setLanguage(newLang);
+      }
+    }, 3000);
   }
 
-  // Listen for custom language change events
   window.addEventListener("languagechange", (event) => {
     const lang = event.detail?.lang;
-    if (lang && lang !== currentLang) {
+    if (lang && lang !== currentLang && ["en", "ps", "fa"].includes(lang)) {
       setLanguage(lang);
     }
   });
@@ -825,6 +382,7 @@ const khairullah = (function () {
   function fire(options = {}) {
     return new Promise(async (resolve) => {
       if (!translations) {
+        console.warn("khairullahAlert: Translations not loaded.", null);
         resolve({ isConfirmed: false, isDenied: false, dismiss: "error" });
         return;
       }
@@ -868,7 +426,6 @@ const khairullah = (function () {
         background = "#fff",
         color,
         backdropColor = "rgba(0,0,0,0.5)",
-        draggable = type === "draggable",
         input,
         inputAttributes = {},
         preConfirm,
@@ -898,21 +455,12 @@ const khairullah = (function () {
       box.style.background = background;
       box.style.color = color || "#222";
       backdrop.style.background = backdropColor;
-      if (draggable) {
-        box.style.position = "absolute";
-        currentX = window.innerWidth / 2 - width / 2;
-        currentY = window.innerHeight / 2 - box.offsetHeight / 2;
-        box.style.left = currentX + "px";
-        box.style.top = currentY + "px";
-        box.style.transform = "none";
-      } else {
-        box.style.position = "fixed";
-        box.style.left = position === "top-end" ? "auto" : "50%";
-        box.style.top = position === "top-end" ? "20px" : "50%";
-        box.style.right = position === "top-end" ? "20px" : "auto";
-        box.style.transform =
-          position === "top-end" ? "translate(0, 0)" : "translate(-50%, -50%)";
-      }
+      box.style.position = "fixed";
+      box.style.left = position === "top-end" ? "auto" : "50%";
+      box.style.top = position === "top-end" ? "20px" : "50%";
+      box.style.right = position === "top-end" ? "20px" : "auto";
+      box.style.transform =
+        position === "top-end" ? "translate(0, 0)" : "translate(-50%, -50%)";
 
       document.getElementById("alertTitle").innerHTML = title || msg.title;
       document.getElementById("alertText").innerHTML = text || msg.text;
@@ -1082,9 +630,6 @@ const khairullah = (function () {
           progress.style.width = (timeLeft / timer) * 100 + "%";
           if (timeLeft <= 0) clearInterval(interval);
         }, 10);
-        if (didOpen) {
-          didOpen();
-        }
       }
 
       const timeout = timer || config.timeout;
@@ -1094,6 +639,10 @@ const khairullah = (function () {
             close({ isConfirmed: false, isDenied: false, dismiss: "timer" }),
           timeout
         );
+      }
+
+      if (didOpen) {
+        didOpen();
       }
 
       function close(result = {}) {
@@ -1109,11 +658,9 @@ const khairullah = (function () {
             box.removeChild(box.querySelector(".alert-close-btn"));
           if (box.querySelector(".timer-progress"))
             box.removeChild(box.querySelector(".timer-progress"));
+          resolve(result);
         }, 300);
         clearTimeout(box.timeoutId);
-        if (typeof box.resolve === "function") {
-          box.resolve(result);
-        }
       }
     });
   }
@@ -1122,7 +669,10 @@ const khairullah = (function () {
   loadTranslations();
   observeLanguageChanges();
 
-  return { fire };
+  return {
+    fire,
+    setLanguage,
+  };
 })();
 
 document.addEventListener("keydown", (e) => {
